@@ -2,3 +2,48 @@
   background-color: #989fce;
 }
 
+.container {
+  width: 85vw;
+}
+.container-skin {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}
+
+.image1 {
+  width: 100%;
+  max-width: 1140px;
+  object-fit: cover;
+}
+
+.googoli {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr, 1fr, 1fr;
+}
+
+.icon-star {
+  width: 20px;
+  height: 20px;
+}
+.icon-star1 {
+  width: 30px;
+  height: 30px;
+}
+.star-rating-number {
+  padding-top: 10px;
+}
+
+.icon-container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}

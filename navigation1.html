@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation</title>
+  </head>
+  <body></body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <title>My BCIT Project</title>
@@ -18,17 +27,6 @@
 
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-  />
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 <body>
   <!------------------------------>
@@ -79,15 +77,46 @@
 
   <br />
   <br />
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card">
+          <img src="./images/vancouver-general-hospita.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Vancouver General Hospital</h5>
+            <p class="card-text">Jim Pattison Pavilion, 899 W 12th Ave, Vancouver, BC V5Z 1M9</p>
+            <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+          </div>
+        </div>
+      </div>
+    <div class="col">
+      <div class="card">
+        <img src="./images/Richmond-Hospital.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Richmond Hospital</h5>
+          <p class="card-text">7000 Westminster Hwy, Richmond, BC V6X 1A2</p>
+          <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+        <div class="card">
+          <img src="./images/Royal-columbian-hospital.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Royal Columbian Hospital</h5>
+            <p class="card-text">330 E Columbia St, New Westminster, BC V3L 3W7</p>
+            <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+          </div>
+        </div>
+      </div>
 
-  <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Try out Emergency Time App</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Try it out.</button>
-        <a href="login.html" class="btn btn-primary" role="button">Log in</a>
+    <div class="col">
+      <div class="card">
+        <img src="./images/Burnaby-hospital.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Burnaby Hospital</h5>
+          <p class="card-text">3935 Kincaid St, Burnaby, BC V5G 2X6</p>
+          <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+        </div>
       </div>
     </div>
   </div>
@@ -110,7 +139,7 @@
   <!---------------------------------------------->
 
   <!-- Link to scripts of your own -->
-  <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <!-- <script src="./scripts/script.js"></script> -->
 </body>
 
 </html>
