@@ -1,107 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Emergency Time App</title>
+    <meta name="comp1800 template" content="My 1800 App" />
 
-<head>
-  <title>Emergency Time App</title>
-  <meta name="comp1800 template" content="My 1800 App" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Boostrap Library JS CDN  go here -->
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <!-- Boostrap Library JS CDN  go here -->
+    <!-- Other libraries go here -->
+    <style>
+      #background {
+        background-image: url(./images/frame-medical-equipment-desk.jpg);
+        background-repeat: no-repeat;
 
-  <!-- Other libraries go here -->
+        height: 70vh;
+        object-fit: cover;
+        background-size: 100% 100%;
+        background-position: center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  </head>
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+    <!-- Stuff for body goes here -->
+    <nav
+      style="padding-bottom: 0; padding-top: 0"
+      class="navbar navbar-expand-lg bg-body-tertiary"
+    >
+      <div class="container2 container-fluid navbar-color">
+        <img
+          class="float-left"
+          src="./images/logo.jpg"
+          alt=""
+          width="30"
+          height="30"
+          style="margin: auto auto"
+        />
+        <a class="navbar-brand" href="./index.html" style="margin-left: 1em">
+          Emergency Time App</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html">Sign-up</a>
+            </li>
+            <li>
+              <a class="nav-link" href="./login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Settings</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-secondary" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-  />
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-
-<body>
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
-  <!-- Stuff for body goes here -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid navbar-color">
-      <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30" style="margin: auto auto">
-      <a class="navbar-brand" href="./index.html" style="margin-left: 1em;"> Emergency Time App</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">Sign-up</a>
-          </li>
-          <li>
-            <a class="nav-link" href="./login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-secondary" type="submit">
-            Search
-          </button>
-        </form>
+    <div id="background" class="container2 text-center">
+      <div class="px-4 py-5">
+        <img
+          class="d-block mx-auto mb-4"
+          src="./images/logo.jpg"
+          alt=""
+          width="72"
+          height="57"
+        />
+        <h1 class="display-5 fw-bold">Try out Emergency Time App</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">
+            The app that quickly takes you the emergency you need.
+          </p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">
+              Try it out.
+            </button>
+            <a
+              href="login.html"
+              class="btn btn-outline-secondary btn-lg px-4 gap-3"
+              role="button"
+              >Log in</a
+            >
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
 
-  <br />
-  <br />
+    <footer
+      style="margin-top: 0.5rem"
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top"
+    >
+      <p class="col-md-4 mb-0 text-muted">
+        &copy; 2024 Emergency Time App, Team BBY 3.
+      </p>
+      <a
+        href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+      >
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+      </a>
+    </footer>
 
-  <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Try out Emergency Time App</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Try it out.</button>
-        <a href="login.html" class="btn btn-outline-secondary btn-lg px-4 gap-3" role="button">Log in</a>
-      </div>
-    </div>
-  </div>
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-  <br />
-  <br />
-
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2024 Emergency Time App, Team BBY 3.</p>
-    <a href="/"
-      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap" />
-      </svg>
-    </a>
-  </footer>
-
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
-
-  <!-- Link to scripts of your own -->
-  <script src="./scripts/firebaseAPI_BBY03.js"></script>
-</body>
-
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  </body>
 </html>

@@ -29,13 +29,26 @@
     href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
   />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <style>
+    #background {
+      background-image: url(./images/frame-medical-equipment-desk.jpg);
+      background-repeat: no-repeat;
 
+      height: 70vh;
+      object-fit: cover;
+      background-size: 100% 100%;
+      background-position: center;
+      display: grid;
+
+ 
+    }
+  </style>
 <body>
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
   <!-- Stuff for body goes here -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav style="padding-bottom: 0; padding-top: 0" class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid navbar-color">
       <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30" style="margin: auto auto">
       <a class="navbar-brand" href="./index.html" style="margin-left: 1em;"> Emergency Time App</a>
@@ -67,40 +80,40 @@
       </div>
     </div>
   </nav>
-
-  <br />
-  <br />
-
-  <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Welcome to Emergency Time App</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center btn-group-vertical">
-        <a href="./map.html" type="button" class="btn btn-secondary btn-lg px-4 gap-3 w-50" style="margin: 0 auto">Search Hospitals</a>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4 w-50" style="margin: 0 auto">Hospital Wait Times</button>
+<div id="background">
+  
+    
+    <div class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
+      <h1 class="display-5 fw-bold">Welcome to Emergency Time App</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center btn-group-vertical">
+          <a href="./map.html" type="button" class="btn btn-secondary btn-lg px-4 gap-3 w-50" style="margin: 0 auto">Search Hospitals</a>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4 w-50" style="margin: 0 auto">Hospital Wait Times</button>
+        </div>
       </div>
     </div>
-  </div>
-  <nav id="navbarPlaceholder"></nav>
-
-  <!-- the body of your page goes here -->
-  <!-- stuff -->
-  <div class="container-fluid bg-light text-dark p-5">
-    <div class="container bg-light p-5">
-      <h1 class="display-4">
-        Good morning, <span id="name-goes-here"></span>
-      </h1>
-      <p>Your wait time is safe with us.</p>
-    </div>
-  </div>
+    <nav id="navbarPlaceholder"></nav>
   
-  <!-- our own footer goes here-->
-  <nav id="footerPlaceholder"></nav>
-
-  <br />
-  <br />
-
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+   
+  
+    <!-- our own footer goes here-->
+    <nav id="footerPlaceholder"></nav>
+  
+    <br />
+    <br />
+</div>
+<div class="container-fluid bg-light text-dark p-5">
+  <div class="container bg-light p-5">
+    <h1 class="display-4">
+      Good morning, <span id="name-goes-here"></span>
+    </h1>
+    <p>Your wait time is safe with us.</p>
+  </div>
+</div>
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-muted">&copy; 2024 Emergency Time App, Team BBY 3.</p>
     <a href="/"
