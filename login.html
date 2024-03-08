@@ -39,6 +39,20 @@
       rel="stylesheet"
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
+    <style>
+      #background {
+        background-image: url(./images/frame-medical-equipment-desk.jpg);
+        background-repeat: no-repeat;
+
+        height: 70vh;
+        object-fit: cover;
+        background-size: 100% 100%;
+        background-position: center;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
 
   <body>
@@ -46,18 +60,40 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      style="padding-bottom: 0; padding-top: 0"
+      class="navbar navbar-expand-lg bg-body-tertiary"
+    >
       <div class="container-fluid navbar-color">
-        <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30">
-        <a class="navbar-brand" href="./index.html" style="margin-left: 1em;"> Emergency Time App</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <img
+          class="float-left"
+          src="./images/logo.jpg"
+          alt="hi"
+          width="30"
+          height="30"
+          style="margin: auto auto"
+        />
+        <a class="navbar-brand" href="./index.html" style="margin-left: 1em">
+          Emergency Time App</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              <a class="nav-link active" aria-current="page" href="./index.html"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./login.html">Sign-up</a>
@@ -70,26 +106,32 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-secondary" type="submit">
-              Search
-            </button>
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-secondary" type="submit">Search</button>
           </form>
         </div>
       </div>
     </nav>
 
-    <br />
-    <br />
-    <div class="container">
-      <h1>Let's Login!</h1>
+    <div id="background">
+      <br />
+      <br />
+      <div class="container">
+        <h1>Let's Login!</h1>
+      </div>
+      <div id="firebaseui-auth-container"></div>
+      <div id="loader">Loading...</div>
+      <br />
+      <br />
     </div>
-    <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    <br />
-    <br />
 
     <footer
+      style="margin-top: 0.5rem"
       class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
     >
       <p class="col-md-4 mb-0 text-muted">
