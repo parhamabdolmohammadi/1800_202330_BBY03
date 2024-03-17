@@ -1,7 +1,7 @@
 var submit = document.getElementById('reviewForm');
 var textarea = document.getElementById('reviewInput');
 var docRef = null;   //this is the id of the hospital, change it to ID variable later
-var hospID = null;
+let hospID = null;
 
 //Marcus: i was trying to grab the values of each hospital so it could be used
 var itemName = null;
