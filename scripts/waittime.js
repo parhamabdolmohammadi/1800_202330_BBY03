@@ -4,7 +4,7 @@ function readTimeNW(id) {
            console.log("current time data: " + idDoc.data());                          //.data() returns data object
       })
 }
-readQuote("FdbvfQwFmYyugTGpbgQc");        //calling the function
+readTimeNW("FdbvfQwFmYyugTGpbgQc");        //calling the function
 
 function readTimeVGH(id) {
     db.collection("quotes").doc(id)                                                      //name of the collection and documents should matach excatly with what I have in Firestore
@@ -12,7 +12,7 @@ function readTimeVGH(id) {
            console.log("current time data: " + idDoc.data());                          //.data() returns data object
       })
 }
-readQuote("G2yHk50SycGPcyd2ZR3M");        //calling the function
+readTimeVGH("G2yHk50SycGPcyd2ZR3M");        //calling the function
 
 function readTimeBUR(id) {
     db.collection("quotes").doc(id)                                                      //name of the collection and documents should matach excatly with what I have in Firestore
@@ -20,7 +20,7 @@ function readTimeBUR(id) {
            console.log("current time data: " + idDoc.data());                          //.data() returns data object
       })
 }
-readQuote("LcOuad5poxGgwFB8KKbn");        //calling the function
+readBUR("LcOuad5poxGgwFB8KKbn");        //calling the function
 
 //Getting all documents from one collection in Firestore
 function getAllItems() {
