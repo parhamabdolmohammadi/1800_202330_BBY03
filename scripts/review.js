@@ -16,6 +16,7 @@ var itemUpd = null;
 var itemLat = null;
 var itemLng = null;
 
+
 //Marcus: this should be edited so it can be used to display for all hospitals instead of only one hospital
 function getId(collection){
     db.collection(collection).get()
@@ -32,6 +33,7 @@ function getId(collection){
 
 getId("hospitals");
 
+console.log(hospId);
 //Marcus: this was me trying to get the values of each hospital so they could be used later, the value of the
 //variables only work inside the function for some reason
 function getData() {
@@ -82,32 +84,5 @@ submit.addEventListener("click", function () {
     submit.setAttribute("disabled", "disabled");
 });
 
-// submitButton.addEventListener('click', function(event) {
-//     event.preventDefault(); // Prevent the form from submitting traditionally
+// db.collection("hospitals").doc(hospID).document("review").doc("user1")
 
-//     // Get the value from the textarea
-//     var review = textarea.value.trim(); // Trim whitespace from the textarea value
-
-//     if (review !== '') {
-//         // Assuming you have already initialized Firebase and obtained the Firestore instance
-//         var docRef = db.collection("hospitals").doc(vancouverGeneralHospitalID);
-
-//         // Use the update method to update specific fields in the document
-//         docRef.update({
-//             specificProperty: review
-//         })
-//         .then(() => {
-//             console.log("Document successfully updated!");
-//         })
-//         .catch((error) => {
-//             console.error("Error updating document: ", error);
-//         });
-//     } else {
-//         console.log('Textarea is empty. No update performed.');
-//     }
-
-//     // Clear the textarea after submission (optional)
-//     textarea.value = '';
-// });
-
-// console.log(vancouverGeneralHospitalID);

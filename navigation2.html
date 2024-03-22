@@ -26,9 +26,30 @@
   <!-- Boostrap Library JS CDN  go here -->
 
   <!-- Other libraries go here -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+  />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
+  
+  <style>
+       a {
+      text-decoration: none;
+      color: black;
+    }
+
+    a:hover {
+      color: honeydew;
+    }
+  </style>
 
 <body>
   <!------------------------------>
@@ -71,9 +92,9 @@
   <br />
   <br />
   <div class="container card mb-3 contais">
-    <img src="/images/vancouver-general-hospita.jpg" class="card-img-top" alt="...">
+    <img src="/images/vancouver-general-hospita.jpg" id="hospital_image"  class="card-img-top hospital_image" alt="..."><!-- 1 -->
     <div class="card-body"> 
-      <h5 class="card-title">Vancouver General Hospital</h5>
+      <h5 class="card-title" id="hopital_name"></h5><!-- 2 -->
       <p class="card-text"><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com (1).svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com (1).svg" alt=""> <span style="padding-top: 30px;" class="star-rating-number">3.1</span></p>
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/hospital-1214-svgrepo-com.svg" alt="">general hospital</p>
       <div class=" overflow-hidden text-center">
@@ -81,11 +102,11 @@
           <div class="col-6">
             <a class="p-3"><span class="icon-container"><img class="icon-star1" src="./images/telephone-receiver-material-svgrepo-com.svg" alt=""><p>Call</p></span></a>
           </div>
-          <div class="col-6">
-            <a href="navigaton3.html"  class="p-3"><span class="icon-container"><img class="icon-star1" src="./images/location-pin-svgrepo-com (1).svg" alt=""><p>Locate</p></span></a>
+          <div class="col-6" >
+            <a   id="hospital_anchor" class="p-3"><span class="icon-container"><img class="icon-star1" src="./images/location-pin-svgrepo-com (1).svg" alt=""><p>Locate</p></span></a>
           </div>
           <div class="col-6">
-            <a class="p-3"><span class="icon-container"><img class="icon-star1" src="./images/clock-three-svgrepo-com.svg" alt=""><p>Availability</p></span></a>
+            <a class="p-3" href=""><span class="icon-container"><img class="icon-star1" src="./images/clock-three-svgrepo-com.svg" alt=""><p>Availability</p></span></a>
           </div>
           <div class="col-6">
             <a class="p-3"><span class="icon-container"><img class="icon-star1" src="./images/website-ui-web-svgrepo-com.svg" alt=""><p>Website</p></span></a>
@@ -123,9 +144,9 @@
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/authentication.js"></script>
-  <script src="./scripts/main.js"></script>
   <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <script src="./scripts/navigation2.js"></script>
+
   
 </body>
 

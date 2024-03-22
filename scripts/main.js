@@ -93,58 +93,59 @@ function writeHospitals() {
         review: " ",
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
-    // hospitalRef.add({
-    //     code: "Royal-columbian-hospital",
-    //     name: "Royal Columbian Hospital", //replace with your own city?
-    //     city: "New Westminster",
-    //     province: "BC",
-	// 			address: "330 E Columbia St",
-    //  //number value
-    //     postal_code: "V3L 3W7",
-    //     lat: "49°13'36.3\"N",
-    //     lng: "122°53'27.4\"W",
-    //     hospital_wait_time_morning: "3 Hours",
-    //     hostpital_wait_time_afternoon: "5 Hours",
-    //     hospital_wait_time_night: "2 Hours",
-    //     hospital_wait_time_after_midnight: "1 hours",
-    //     review: " ",
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // hospitalRef.add({
-    //     code: "Richmond-Hospital",
-    //     name: "Richmond Hospital", //replace with your own city?
-    //     city: "Richmond",
-    //     province: "BC",
-	// 			address: "Jim Pattison Pavilion, 899 W 12th Ave",
-    //  //number value
-    //     postal_code: "V6X 1A2",
-    //     lat: " 49°10'09.1\"N",
-    //     lng: "123°08'49.1\"W",
-    //     hospital_wait_time_morning: "5 Hours",
-    //     hostpital_wait_time_afternoon: "2 Hours",
-    //     hospital_wait_time_night: "1.5 Hours",
-    //     hospital_wait_time_after_midnight: "2 hours",
-    //     review: " ",
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
-    // hospitalRef.add({
-    //     code: "Burnaby-hospital",
-    //     name: "Burnaby Hospital", //replace with your own city?
-    //     city: "Burnaby",
-    //     province: "BC",
-	// 			address: "3935 Kincaid St",
-    //  //number value
-    //     postal_code: "V5G 2X6",
-    //     lat: "49°15'00.7\"N",
-    //     lng: "123°00'57.1\"W",
-    //     hospital_wait_time_morning: "2.5 Hours",
-    //     hostpital_wait_time_afternoon: "6 Hours",
-    //     hospital_wait_time_night: "2 Hours",
-    //     hospital_wait_time_after_midnight: "1 hours",
-    //     review: " ",
-    //     last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
-    // });
+    hospitalRef.add({
+        code: "Royal-columbian-hospital",
+        name: "Royal Columbian Hospital", 
+        city: "New Westminster",
+        province: "BC",
+				address: "330 E Columbia St",
+     //number value
+        postal_code: "V3L 3W7",
+        lat: "49°13'36.3\"N",
+        lng: "122°53'27.4\"W",
+        hospital_wait_time_morning: "3 Hours",
+        hostpital_wait_time_afternoon: "5 Hours",
+        hospital_wait_time_night: "2 Hours",
+        hospital_wait_time_after_midnight: "1 hours",
+        review: " ",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    hospitalRef.add({
+        code: "Richmond-Hospital",
+        name: "Richmond Hospital", //replace with your own city?
+        city: "Richmond",
+        province: "BC",
+				address: "Jim Pattison Pavilion, 899 W 12th Ave",
+     //number value
+        postal_code: "V6X 1A2",
+        lat: " 49°10'09.1\"N",
+        lng: "123°08'49.1\"W",
+        hospital_wait_time_morning: "5 Hours",
+        hostpital_wait_time_afternoon: "2 Hours",
+        hospital_wait_time_night: "1.5 Hours",
+        hospital_wait_time_after_midnight: "2 hours",
+        review: " ",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+    hospitalRef.add({
+        code: "Burnaby-hospital",
+        name: "Burnaby Hospital",
+        city: "Burnaby",
+        province: "BC",
+				address: "3935 Kincaid St",
+     //number value
+        postal_code: "V5G 2X6",
+        lat: "49°15'00.7\"N",
+        lng: "123°00'57.1\"W",
+        hospital_wait_time_morning: "2.5 Hours",
+        hostpital_wait_time_afternoon: "6 Hours",
+        hospital_wait_time_night: "2 Hours",
+        hospital_wait_time_after_midnight: "1 hours",
+        review: " ",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
     
 }
+
 
 //writeHospitals();

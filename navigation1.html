@@ -24,9 +24,24 @@
   <!-- Boostrap Library JS CDN  go here -->
 
   <!-- Other libraries go here -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+  />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
+  <style>
+    .ghol {
+      margin: 25px auto;
+    }
+  </style>
 
 <body>
   <!------------------------------>
@@ -81,14 +96,14 @@
   <br />
   <br />
   
-  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
     <div class="col">
         <div class="card">
           <img src="./images/vancouver-general-hospita.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Vancouver General Hospital</h5>
             <p class="card-text">Jim Pattison Pavilion, 899 W 12th Ave, Vancouver, BC V5Z 1M9</p>
-            <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
+            <a href="navigation2.html" class="btn btn-primary btn-lg" onclick='getDataForNav2("Vancouver General Hospital")'>Navigate To</a>
             
           </div>
         </div>
@@ -99,7 +114,7 @@
           <div class="card-body">
             <h5 class="card-title">Royal Columbian Hospital</h5>
             <p class="card-text">330 E Columbia St, New Westminster, BC V3L 3W7</p>
-            <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+            <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
           </div>
         </div>
       </div>
@@ -109,12 +124,10 @@
         <div class="card-body">
           <h5 class="card-title">Richmond Hospital</h5>
           <p class="card-text">7000 Westminster Hwy, Richmond, BC V6X 1A2</p>
-          <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
+          <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
         </div>
       </div>
     </div>
-    
-
     <div class="col">
       <div class="card">
         <img src="./images/Burnaby-hospital.jpg" class="card-img-top" alt="...">
@@ -125,8 +138,31 @@
         </div>
       </div>
     </div>
-  </div>
 
+
+  </div> -->
+  <div  class=" row row-cols-1 row-cols-md-2 g-4">
+    <h1>Hospitals</h1>
+    <!-- Here is the container for cards  -->
+    <div  class="container ">
+        <div  id="hospitals-go-here" class="row row-cols-auto">
+        </div>
+    </div>
+</div>
+
+<!--Template for the hike cards-->
+<template id="HositalCardTemplate">
+  <div class="col ghol">
+    <div class="card">
+      <img style="width: 400px; height: 200px;" src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card Title</h5>
+        <p class="card-address">3935 Kincaid St, Burnaby, BC V5G 2X6</p>
+        <a  class="btn btn-primary btn-lg">Navigate To</a>
+      </div>
+    </div>
+  </div>
+</template>
   <br />
   <br />
 
@@ -146,9 +182,11 @@
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
-  <script src="./scripts/authentication.js"></script>
-  <script src="./scripts/main.js"></script>
+ 
+
   <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <script src="./scripts/navigation1.js"></script>
+
 </body>
 
 </html>
