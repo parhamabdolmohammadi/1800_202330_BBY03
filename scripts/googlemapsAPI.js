@@ -15,7 +15,7 @@
             e.set("libraries", [...r] + "");
             for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
             e.set("callback", c + ".maps." + q);
-            a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+            a.src = `https://maps.${c}apis.com/maps/api/js?v=beta` + e;
             d[q] = f; a.onerror = () => h = n(Error(p + " could not load."));
             a.nonce = m.querySelector("script[nonce]")?.nonce || "";
             m.head.append(a) }));
@@ -23,7 +23,7 @@
                 r.add(f) && u().then(() => 
                     d[l](f, ...n))
         })
-        ({key : "AIzaSyC2ZbWCqFjKYvfzamJkyj_0S9kaAw64Wck"
+        ({key : "AIzaSyDyTg4S0tIUhhAYAEMs3HdGza412ztw5vs"
     // Add other bootstrap parameters as needed, using camel case.
     // Use the 'v' parameter to indicate the version to load (alpha, beta, weekly, etc.)
 });

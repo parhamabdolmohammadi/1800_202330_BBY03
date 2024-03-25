@@ -84,5 +84,3 @@ submit.addEventListener("click", function () {
     submit.setAttribute("disabled", "disabled");
 });
 
-// db.collection("hospitals").doc(hospID).document("review").doc("user1")
-
