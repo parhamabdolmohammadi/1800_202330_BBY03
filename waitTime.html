@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wait Time</title>
-  <link rel="stylesheet" href="./styles/style.css">
-</head>
-
-<body></body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Wait Time</title>
+  </head>
+  <body></body>
 </html>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <title>My BCIT Project</title>
+  <title>Select your hospital</title>
   <meta name="comp1800 template" content="My 1800 App" />
 
   <!-- Required meta tags -->
@@ -28,16 +24,33 @@
   <!-- Boostrap Library JS CDN  go here -->
 
   <!-- Other libraries go here -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+  />
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
+  <style>
+    .ghol {
+      margin: 25px auto;
+    }
+  </style>
+
+<body>
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
   <!-- Stuff for body goes here -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid navbar-color">
-      <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30" style="margin: auto auto">
+      <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30">
       <a class="navbar-brand" href="./index.html" style="margin-left: 1em;"> Emergency Time App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,126 +71,104 @@
             <a class="nav-link" href="#">Settings</a>
           </li>
         </ul>
+
+
+
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button class="btn btn-secondary" type="submit">
             Search
           </button>
         </form>
+
+      </div>
+    </div>
   </nav>
 
   <br />
   <br />
+  
+  <form style="width: 95vw; padding-left: 5vw;"  class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary btn-lg" type="submit">Search</button>
+  </form>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Live Hospital Wait Times</h1>
-  </section>
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top"
-              data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-              alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-              src="./images/vancouver-general-hospita.jpg" data-holder-rendered="true">
-            <div class="card-body">
-              <p class="card-text">
-              <h5>
-                Vancouver General Hospital
-              </h5>
-              Jim Pattison Pavilion, 899 W 12th Ave, Vancouver, BC V5Z 1M9
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="./navigaton3.html"><button type="button"
-                      class="btn btn-sm btn-outline-secondary">View</button></a>
-                </div>
-                <p style="font-size: 16pt; color: red;"> 4 Hours 43 Minutes</p>
-              </div>
-            </div>
+  <br />
+  <br />
+  
+  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+        <div class="card">
+          <img src="./images/vancouver-general-hospita.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Vancouver General Hospital</h5>
+            <p class="card-text">Jim Pattison Pavilion, 899 W 12th Ave, Vancouver, BC V5Z 1M9</p>
+            <a href="navigation2.html" class="btn btn-primary btn-lg" onclick='getDataForNav2("Vancouver General Hospital")'>Navigate To</a>
+            
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top"
-              data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-              alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-              src="./images/Royal-columbian-hospital.jpg" data-holder-rendered="true">
-            <div class="card-body">
-              <p class="card-text">
-              <h5>
-                Royal Columbian Hospital
-              </h5>
-              330 E Columbia St, New Westminster, BC V3L 3W7
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="./navigaton3.html"><button type="button"
-                      class="btn btn-sm btn-outline-secondary">View</button></a>
-                </div>
-                <p style="font-size: 16pt; color: green;"> 1 Hour 32 Minutes</p>
-              </div>
-            </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="./images/Royal-columbian-hospital.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Royal Columbian Hospital</h5>
+            <p class="card-text">330 E Columbia St, New Westminster, BC V3L 3W7</p>
+            <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top"
-              data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-              alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-              src="./images/Richmond-Hospital.jpg" data-holder-rendered="true">
-            <div class="card-body">
-              <p class="card-text">
-              <h5>
-                Richmond Hospital
-              </h5>
-              7000 Westminster Hwy, Richmond, BC V6X 1A2
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="./navigaton3.html"><button type="button"
-                      class="btn btn-sm btn-outline-secondary">View</button></a>
-                </div>
-                <p style="font-size: 16pt; color: orange;"> 2 Hours 23 Minutes</p>
-              </div>
-            </div>
-          </div>
+      </div>
+    <div class="col">
+      <div class="card">
+        <img src="./images/Richmond-Hospital.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Richmond Hospital</h5>
+          <p class="card-text">7000 Westminster Hwy, Richmond, BC V6X 1A2</p>
+          <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
         </div>
-
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top"
-              data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-              alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-              src="./images/Burnaby-hospital.jpg" data-holder-rendered="true">
-            <div class="card-body">
-              <p class="card-text">
-              <h5>
-                Burnaby Hospital
-              </h5>
-              3935 Kincaid St, Burnaby, BC V5G 2X6
-              </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="./navigaton3.html"><button type="button"
-                      class="btn btn-sm btn-outline-secondary">View</button></a>
-                </div>
-                <p style="font-size: 16pt; color: red;"> 6 Hours 9 Minutes</p>
-              </div>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img src="./images/Burnaby-hospital.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Burnaby Hospital</h5>
+          <p class="card-text">3935 Kincaid St, Burnaby, BC V5G 2X6</p>
+          <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
         </div>
+      </div>
+    </div>
 
 
+  </div> -->
+  
+  <div id="clock"></div>
+  <div  class=" row row-cols-1 row-cols-md-2 g-4">
+    <h1 id="liveTime">Live Wait Times</h1>
+    
+    <!-- Here is the container for cards  -->
+    <div  class="container ">
+        <div  id="hospitals-go-here" class="row row-cols-auto">
+        </div>
+    </div>
+</div>
 
-
-
+<!--Template for the hike cards-->
+<template id="HositalCardTemplate">
+  <div class="col ghol">
+    <div class="card">
+      <img s  tyle="width: 400px; height: 200px;" src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h3 class="card-time">time</h3>
+        <h5 class="card-title">Card Title</h5>       
+        <p class="card-update">update</p>
+        <p class="card-address">adress</p>
+        <a  class="btn btn-primary btn-lg">Details</a>
       </div>
     </div>
   </div>
-
+</template>
+  <br />
   <br />
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -188,8 +179,20 @@
         <use xlink:href="#bootstrap" />
       </svg>
     </a>
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    </body>
+  </footer>
+
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+
+  <!-- Link to scripts of your own -->
+  <!-- <script src="./scripts/script.js"></script> -->
+ 
+
+  <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <!-- <script src="./scripts/navigation1.js"></script> -->
+  <script src="./scripts/waittime.js"></script>
+
+</body>
 
 </html>

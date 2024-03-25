@@ -57,3 +57,20 @@
   width: 100%;
   height: auto;
 }
+
+#clock {
+  font-size: 40px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 50px;
+  color: #ff7b00;
+}
+
+#liveTime{
+  margin: 50px;
+}
+
+.card-time{
+  color: rgb(252, 3, 40);
+}
