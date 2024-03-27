@@ -14,7 +14,7 @@ function displayHospitalInfo() {
             // only populate title, and image
             document.getElementById( "hopital_name" ).innerHTML = hospitalName;
             let imgEvent = document.getElementById("hospital_image");
-            imgEvent.src = "../images/" + hospitalCode + ".jpg";
+            imgEvent.src = "./images/" + hospitalCode + ".jpg";
             document.getElementById("hospital_anchor").href = "navigaton3.html?docID=" + ID;
                 
         } );
