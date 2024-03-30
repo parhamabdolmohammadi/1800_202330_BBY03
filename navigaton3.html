@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navigation</title>
-    <link rel="stylesheet" href="./styles/style.css">
-  </head>
-  <body></body>
-</html>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+
   <title>Locate your hospital</title>
   <meta name="comp1800 template" content="My 1800 App" />
 
@@ -23,7 +14,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <!-- Boostrap Library JS CDN  go here -->
-
+  <script src="./scripts/googlemapsAPI.js"></script>
+  
+  
   <!-- Other libraries go here -->
 
   <!-- Link to styles of your own -->
@@ -51,7 +44,7 @@
   .list {
     list-style-type: none;
   }
-  li {
+  fieldset li {
     padding-top: 25px;
   }
 
@@ -63,9 +56,19 @@
   .list-div {
     margin-bottom: 2px;
   }
+
+  footer p {
+    color: aliceblue;
+
+  }
 </style>
 
-<body>
+<body  
+style="
+  background: url(./images/pedro-lastra-Nyvq2juw4_o-unsplash.jpg) center /
+    cover no-repeat;
+  background-color: #444;
+">
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
@@ -81,7 +84,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+            <a  class="nav-link active" aria-current="page" href="./index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./login.html">Sign-up</a>
@@ -92,16 +95,19 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Settings</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./saved.html">Saved</a>
+          </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-secondary" type="submit">
-            Search
-          </button>
-        </form>
+        <a class="nav-link" id="logout" href="#">
+          <img src="./images/logout-svgrepo-com (1).svg" alt="logout icon" width="30" height="24"
+            class="d-inline-block align-text-top">
+          Log out
+            </a>
       </div>
     </div>
   </nav>
+ 
 
   <br />
   <br />
@@ -113,9 +119,15 @@
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/hospital-1214-svgrepo-com.svg" alt="">general hospital</p>
       <p class="card-text" ><img style="padding-right: 2px;"  class="icon-star" src="images/location-pin-svgrepo-com (1).svg" alt=""><span id="hospital-address"></span></p>
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/clock-three-svgrepo-com.svg" alt="">Open - closes 10 am</p>
-      <div class=" overflow-hidden text-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.791348806784!2d-123.12473112361822!3d49.26140057138966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548673c28db3e7ed%3A0xf09486e6e83bb967!2sVancouver%20General%20Hospital!5e0!3m2!1sen!2sca!4v1709598300552!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      <div class="card w-50 " style="margin: 0 auto; text-align: center;">
+        <!--*************************************************-->
+           
+             <div class="ratio ratio-1x1" id="here"></div>
+             <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.408050538696!2d-123.018461523513!3d49.24971127138796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676e77e4f372b%3A0xf79d5ab0081a6626!2sBurnaby%20Hospital!5e0!3m2!1spt-BR!2sca!4v1709593616903!5m2!1spt-BR!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+           </div>
+ 
+           <!--*************************************************-->
+         </div>
       <p class="card-text">&nbsp;</p></p>
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg" alt="">Wheelchair Accessible Entrance</p></p>
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg" alt="">Accessible Parking</p></p>
@@ -125,7 +137,7 @@
      
      
      
-      <fieldset style="padding: 20px">
+      <fieldset style="padding: 20px; margin-bottom: 20px;">
         <legend>Enter Your Wait Time</legend>
         <ul class="list">
           <li><span style="display: block; padding-bottom:4px;">Daytime:</span>
@@ -170,7 +182,7 @@
   <br />
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2024 Emergency Time App, Team BBY 3.</p>
+    <p class="col-md-4 mb-0 ">&copy; 2024 Emergency Time App, Team BBY 3.</p>
     <a href="/"
       class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32">
@@ -186,7 +198,7 @@
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+ 
 
     <!-- JavaScript to initialize the map -->
     <!-- <script>
@@ -199,10 +211,12 @@
                 zoom: 8 // Initial zoom level
             });
     </script> -->
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./scripts/firebaseAPI_BBY03.js"></script>
     <script src="./scripts/navigation3.js"></script>
-    <!-- <script src="./scripts/review.js"></script> -->
+ 
+    
+    <script src="./scripts/scripts.js"></script>
 
 </body>
 </html>

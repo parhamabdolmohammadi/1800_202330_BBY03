@@ -59,10 +59,10 @@ function writeHospitals() {
         postal_code: "V5Z 1M9",
         lat: "49°15'42.5\"N",
         lng: "123°07'19.4\"W",
-        hospital_wait_time_morning: "2 Hours",
-        hospital_wait_time_afternoon: "4 Hours",
-        hospital_wait_time_night: "1.5 Hours",
-        hospital_wait_time_after_midnight: "1 hours",
+        hospital_wait_time_morning: 2 ,
+        hospital_wait_time_afternoon: 4 ,
+        hospital_wait_time_night: 1.5 ,
+        hospital_wait_time_after_midnight: 1 ,
         review: " ",
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
@@ -76,10 +76,10 @@ function writeHospitals() {
         postal_code: "V3L 3W7",
         lat: "49°13'36.3\"N",
         lng: "122°53'27.4\"W",
-        hospital_wait_time_morning: "3 Hours",
-        hostpital_wait_time_afternoon: "5 Hours",
-        hospital_wait_time_night: "2 Hours",
-        hospital_wait_time_after_midnight: "1 hours",
+        hospital_wait_time_morning: 3 ,
+        hostpital_wait_time_afternoon: 5,
+        hospital_wait_time_night: 2,
+        hospital_wait_time_after_midnight: 1 ,
         review: " ",
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
@@ -88,15 +88,15 @@ function writeHospitals() {
         name: "Richmond Hospital", //replace with your own city?
         city: "Richmond",
         province: "BC",
-				address: "Jim Pattison Pavilion, 899 W 12th Ave",
+				address: "7000 Westminster Hwy, Richmond, BC V6X 1A2",
      //number value
         postal_code: "V6X 1A2",
         lat: " 49°10'09.1\"N",
         lng: "123°08'49.1\"W",
-        hospital_wait_time_morning: "5 Hours",
-        hostpital_wait_time_afternoon: "2 Hours",
-        hospital_wait_time_night: "1.5 Hours",
-        hospital_wait_time_after_midnight: "2 hours",
+        hospital_wait_time_morning: 5,
+        hostpital_wait_time_afternoon: 2,
+        hospital_wait_time_night: 1.5,
+        hospital_wait_time_after_midnight: 2,
         review: " ",
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
@@ -110,15 +110,39 @@ function writeHospitals() {
         postal_code: "V5G 2X6",
         lat: "49°15'00.7\"N",
         lng: "123°00'57.1\"W",
-        hospital_wait_time_morning: "2.5 Hours",
-        hostpital_wait_time_afternoon: "6 Hours",
-        hospital_wait_time_night: "2 Hours",
-        hospital_wait_time_after_midnight: "1 hours",
+        hospital_wait_time_morning: 2.5 ,
+        hostpital_wait_time_afternoon: 6,
+        hospital_wait_time_night: 2 ,
+        hospital_wait_time_after_midnight: 1 ,
         review: " ",
         last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
     });
-    
+
 }
 
-
 //writeHospitals();
+
+function writeHospital() {
+    //define a variable for the collection you want to create in Firestore to populate data
+    var hospitalRef = db.collection("hospitals");
+
+    hospitalRef.add({
+        code: "Burnaby-hospital",
+        name: "Burnaby Hospital",
+        city: "Burnaby",
+        province: "BC",
+				address: "3935 Kincaid St",
+     //number value
+        postal_code: "V5G 2X6", 
+        lat: 49.25002870562921,
+        lng: -123.01580684574256,
+        hospital_wait_time_morning: 2.5 ,
+        hostpital_wait_time_afternoon: 6 ,
+        hospital_wait_time_night: 2,
+        hospital_wait_time_after_midnight: 1 ,
+        review: " ",
+        last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+    });
+}
+
+//writeHospital();

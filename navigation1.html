@@ -34,16 +34,34 @@
     rel="stylesheet"
     href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
   />
+
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   <!-- Link to styles of your own -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./styles/style.css">
+
   <style>
     .ghol {
       margin: 25px auto;
     }
+    footer p {
+    color: aliceblue;
+
+  }
+
+  nav {
+    padding: 0;
+  }
+
+    
   </style>
 
-<body>
+<body id="background-container" style="
+background: url(./images/pedro-lastra-Nyvq2juw4_o-unsplash.jpg) center /
+  cover no-repeat;
+background-color: #444;
+
+">
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
@@ -70,78 +88,36 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Settings</a>
           </li>
+                      <li class="nav-item">
+              <a class="nav-link" href="./saved.html">Saved</a>
+            </li>
         </ul>
 
 
 
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-secondary" type="submit">
-            Search
-          </button>
-        </form>
+        <a class="nav-link" id="logout" href="#">
+          <img src="./images/logout-svgrepo-com (1).svg" alt="logout icon" width="30" height="24"
+            class="d-inline-block align-text-top">
+          Log out
+            </a>
 
       </div>
     </div>
   </nav>
 
-  <br />
-  <br />
+
   
+
+  
+  
+  <div  class=" row row-cols-1 row-cols-md-2 g-4" id="background"
+  >
+
   <form style="width: 95vw; padding-left: 5vw;"  class="d-flex" role="search">
+    
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-primary btn-lg" type="submit">Search</button>
   </form>
-
-  <br />
-  <br />
-  
-  <!-- <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div class="col">
-        <div class="card">
-          <img src="./images/vancouver-general-hospita.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Vancouver General Hospital</h5>
-            <p class="card-text">Jim Pattison Pavilion, 899 W 12th Ave, Vancouver, BC V5Z 1M9</p>
-            <a href="navigation2.html" class="btn btn-primary btn-lg" onclick='getDataForNav2("Vancouver General Hospital")'>Navigate To</a>
-            
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="./images/Royal-columbian-hospital.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Royal Columbian Hospital</h5>
-            <p class="card-text">330 E Columbia St, New Westminster, BC V3L 3W7</p>
-            <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
-          </div>
-        </div>
-      </div>
-    <div class="col">
-      <div class="card">
-        <img src="./images/Richmond-Hospital.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Richmond Hospital</h5>
-          <p class="card-text">7000 Westminster Hwy, Richmond, BC V6X 1A2</p>
-          <a href="navigation2.html" class="btn btn-primary btn-lg">Navigate To</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="./images/Burnaby-hospital.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Burnaby Hospital</h5>
-          <p class="card-text">3935 Kincaid St, Burnaby, BC V5G 2X6</p>
-          <button type="button" class="btn btn-primary btn-lg">Navigate To</button>
-        </div>
-      </div>
-    </div>
-
-
-  </div> -->
-  <div  class=" row row-cols-1 row-cols-md-2 g-4">
     <h1>Hospitals</h1>
     <!-- Here is the container for cards  -->
     <div  class="container ">
@@ -149,15 +125,29 @@
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
 <!--Template for the hike cards-->
 <template id="HositalCardTemplate">
   <div class="col ghol">
     <div class="card">
-      <img style="width: 400px; height: 200px;" src="..." class="card-img-top" alt="...">
+      <img style="width: stretch; height: 200px;" src="..." class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card Title</h5>
-        <p class="card-address">3935 Kincaid St, Burnaby, BC V5G 2X6</p>
-        <a class="btn btn-primary btn-lg">Navigate To</a>
+        <div class="card-div"><img class="icon-star1 icon2" id src="./images/hospital-svgrepo-com (1).svg"  alt=""><h5 style="display: inline;" class="card-title">Card Title</h5></div>
+        <div class="card-div"><img class="icon-star1 icon2" id src="./images/waiting-room-time-sit-wait-svgrepo-com.svg"  alt=""><p style="display: inline;" class="card-time">time</p></div>
+        <div class="card-div"><img class="icon-star1 icon2" id src="./images/update-alt-svgrepo-com.svg"  alt=""><p style="display: inline;" >Last Updated:</p></div>
+        <div class="card-div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display: inline;" class="card-update">update</p></div>
+        <div class="card-div"><img class="icon-star1 icon2" id src="./images/location-pin-svgrepo-com (2).svg"  alt=""><p style="display: inline;" class="card-address">3935 Kincaid St, Burnaby, BC V5G 2X6</p></div><br>
+        <div style="float: right;"><i class="material-icons">bookmark_border</i><a class="btn btn-primary btn-lg">Details</a></div> 
       </div>
     </div>
   </div>
@@ -166,7 +156,7 @@
   <br />
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2024 Emergency Time App, Team BBY 3.</p>
+    <p class="col-md-4 mb-0 ">&copy; 2024 Emergency Time App, Team BBY 3.</p>
     <a href="/"
       class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32">
@@ -184,7 +174,11 @@
  
 
   <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./scripts/navigation1.js"></script>
+  <script src="./scripts/populatehospitals.js"></script>
+  <script src="./scripts/scripts.js"></script>
+
 
 </body>
 

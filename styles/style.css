@@ -67,10 +67,24 @@
   color: #ff7b00;
 }
 
-#liveTime{
+#liveTime {
   margin: 50px;
 }
 
-.card-time{
+.card-time {
   color: rgb(252, 3, 40);
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.icon2 {
+  position: relative;
+  bottom: 2px;
+  padding-right: 3px;
+}
+
+.card-div {
+  padding-bottom: 5px;
 }

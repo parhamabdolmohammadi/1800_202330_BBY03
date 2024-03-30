@@ -139,6 +139,7 @@ function writeHospitals() {
                }
                
                newcard.querySelector('.card-update').innerHTML = "Last Updated: " + lastUpdate;
+               
                newcard.querySelector('.card-address').innerHTML = details;
                newcard.querySelector('.card-img-top').src = `./images/${hospitalCode}.jpg`; //Example: NV01.jpg
                newcard.querySelector('a').href = "navigation2.html?docID="+docID;
