@@ -19,7 +19,6 @@ async function showPosition(position) {
     db.collection("hospitals").get().then((allHospitals) => {
         allHospitals.forEach((doc) => {
             let d = distance(doc.data().lat, doc.data().lng);
-            console.log(doc.data().name, d);
             if (d < closest) {
                 closest = d;
                 closestID = doc.data().name;
