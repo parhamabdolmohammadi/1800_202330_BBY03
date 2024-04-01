@@ -99,7 +99,7 @@ background-color: #444;
           <img src="./images/logout-svgrepo-com (1).svg" alt="logout icon" width="30" height="24"
             class="d-inline-block align-text-top">
           Log out
-            </a>
+        </a>
 
       </div>
     </div>
@@ -121,6 +121,7 @@ background-color: #444;
     <h1>Hospitals</h1>
     <!-- Here is the container for cards  -->
     <div  class="container ">
+      <div id="clock"></div>
         <div  id="hospitals-go-here" class="row row-cols-auto"></div>
     </div>
 </div>
@@ -143,7 +144,7 @@ background-color: #444;
       <img style="width: stretch; height: 200px;" src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/hospital-svgrepo-com (1).svg"  alt=""><h5 style="display: inline;" class="card-title">Card Title</h5></div>
-        <div class="card-div"><img class="icon-star1 icon2" id src="./images/waiting-room-time-sit-wait-svgrepo-com.svg"  alt=""><p style="display: inline;" class="card-time">time</p></div>
+        <div class="card-div"><img class="icon-star1 icon2" id src="./images/waiting-room-time-sit-wait-svgrepo-com.svg"  alt=""><h3 style="display: inline;" class="card-time">time</h3></div>
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/update-alt-svgrepo-com.svg"  alt=""><p style="display: inline;" >Last Updated:</p></div>
         <div class="card-div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display: inline;" class="card-update">update</p></div>
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/location-pin-svgrepo-com (2).svg"  alt=""><p style="display: inline;" class="card-address">3935 Kincaid St, Burnaby, BC V5G 2X6</p></div><br>
@@ -176,6 +177,7 @@ background-color: #444;
   <script src="./scripts/firebaseAPI_BBY03.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./scripts/navigation1.js"></script>
+  <!-- <script src="./scripts/waittime.js"></script> -->
   <script src="./scripts/populatehospitals.js"></script>
   <script src="./scripts/distanceReview.js"></script>
   <script src="./scripts/scripts.js"></script>

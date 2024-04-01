@@ -59,12 +59,14 @@
 }
 
 #clock {
-  font-size: 40px;
+  font-size: 30px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   text-align: center;
-  margin: 50px;
-  color: #ff7b00;
+  margin: 20px;
+  color: #000000;
+  background-color: #989fce;
+  width: auto;
 }
 
 #liveTime {
@@ -87,4 +89,21 @@
 
 .card-div {
   padding-bottom: 5px;
+}
+
+.green{
+  color: green;
+}
+
+.orange{
+  color: rgb(252, 134, 0);
+}
+.card{
+  width: 350px;
+  height: 500px;
+}
+.card:hover {
+  
+ color: rgba(255, 255, 255, 0.946);
+  background-color: #bfc6eb;
 }
