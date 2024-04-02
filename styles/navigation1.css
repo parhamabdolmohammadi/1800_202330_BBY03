@@ -1,0 +1,109 @@
+:root {
+    --color-primary: #2584ff;
+    --color-secondary: #00d9ff;
+    --color-accent: #ff3400;
+    --color-headings: #1b0760;
+    --color-body: #918ca4;
+    --color-body-darker: #5c5577;
+    --color-border: #ccc;
+    --border-radius: 30px;
+  }
+  .navbar-color {
+    background-color: #989fce;
+  }
+  
+  .container {
+    width: 85vw;
+  }
+  .container-skin {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 1);
+  }
+  
+  .image1 {
+    width: 100%;
+    max-width: 1140px;
+    object-fit: cover;
+  }
+  
+  .googoli {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr;
+  }
+  
+  .icon-star {
+    width: 20px;
+    height: 20px;
+  }
+  .icon-star1 {
+    width: 30px;
+    height: 30px;
+  }
+  .star-rating-number {
+    padding-top: 10px;
+  }
+  
+  .icon-container {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    border-radius: 5px;
+  }
+  
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
+  
+  #clock {
+    font-size: 30px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+    color: #000000;
+    background-color: #989fce;
+    width: auto;
+  }
+  
+  #liveTime {
+    margin: 50px;
+  }
+  
+  .card-time {
+    color: rgb(252, 3, 40);
+  }
+  
+  .material-icons {
+    cursor: pointer;
+  }
+  
+  .icon2 {
+    position: relative;
+    bottom: 2px;
+    padding-right: 3px;
+  }
+  
+  .card-div {
+    padding-bottom: 5px;
+  }
+  
+  .green{
+    color: green;
+  }
+  
+  .orange{
+    color: rgb(252, 134, 0);
+  }
+  /* .eachCard{
+    background-color: white;
+  } */
+  .card-body:hover {
+    
+   color: rgba(255, 255, 255, 0.946);
+    background-color: #bfc6eb;
+  }
+  
