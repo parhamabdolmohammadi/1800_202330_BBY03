@@ -107,7 +107,7 @@ function displayHospitalsDynamically(collection) {
       });
   }
   
-  displayHospitalsDynamically("hospitals");
+//   displayHospitalsDynamically("hospitals");
   function displayTime() {
     var currentDate = new Date();
     var hours = currentDate.getHours();

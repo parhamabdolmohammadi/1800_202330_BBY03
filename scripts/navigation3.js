@@ -167,7 +167,7 @@ async function initMap() {
         content: pinUser.element,
     });
 }
-// function writeReview() {
+// function writeReviewUpdate() {
 //     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
 //     let dateVisited = document.getElementById("date").value;
 //     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
@@ -201,11 +201,11 @@ async function initMap() {
 //         var userID = user.uid;
 //         hospitalDocID = localStorage.getItem("hospitalDocID");
 
-//         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
+//         db.collection("hospitals").doc(hospitalDocID).update({
 //             reviewer: user.displayName,
 //             email: user.email,
-//             daytime: dateVisited,
-//             date: daytimeSpecified,
+//             date: dateVisited,
+//             daytime: daytimeSpecified,
 //             hours: hoursWaited,
 //             minutes: minutesWaited,
 //             totalWaitTimeAM: hoursWaitedAM,
@@ -213,6 +213,7 @@ async function initMap() {
 //             totalWaitTimeNIGHT: hoursWaitedNIGHT,
 //             totalWaitTimeMidNight: hoursWaitedMidNight,
 //         }).then(() => {
+//     alert("working");
 //             window.location.href = "thanks.html"; // Redirect to the thanks page
 //         }).catch((error) => {
 //             console.error("Error adding review: ", error);
@@ -223,4 +224,4 @@ async function initMap() {
 //     }
 // }
 
-// document.getElementById("reviewForm").addEventListener("click", writeReview);
+// document.getElementById("reviewForm").addEventListener("click", writeReviewUpdate);
