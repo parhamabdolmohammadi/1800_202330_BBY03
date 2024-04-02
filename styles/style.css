@@ -98,11 +98,10 @@
 .orange{
   color: rgb(252, 134, 0);
 }
-.card{
-  width: 350px;
-  height: 500px;
-}
-.card:hover {
+/* .eachCard{
+  background-color: white;
+} */
+.card-body:hover {
   
  color: rgba(255, 255, 255, 0.946);
   background-color: #bfc6eb;
