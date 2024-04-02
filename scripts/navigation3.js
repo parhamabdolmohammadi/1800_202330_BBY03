@@ -65,8 +65,8 @@ function writeReview() {
          db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
             reviewer : user.displayName,
             email: user.email,
-            daytime: dateVisited,
-            date :daytimeSpecified,      
+            daytime: daytimeSpecified,
+            date :dateVisited,      
             hours : hoursWaited,
             minutes : minutesWaited
          }).then(() => {
@@ -93,15 +93,15 @@ let map, lat, lng, hospID;
 // var closest = 100, closestID;
 
 
-getLocation();
+// getLocation();
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Browser doesn't support geolocation.");
-    }
-}
+// function getLocation() {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(showPosition);
+//     } else {
+//         console.log("Browser doesn't support geolocation.");
+//     }
+// }
 
 
 let ID = localStorage.getItem('hospitalDocID');
@@ -133,7 +133,9 @@ async function showPosition(position) {
 
 }
 
-initMap();
+showPosition();
+
+//initMap();
 
 async function initMap() {
     // The location of Uluru
