@@ -105,7 +105,7 @@ function displayWatiTime()  {
             waitTime = doc.data().hospital_wait_time_afternoon;
         } else if (currentTime.getHours() > 17 && currentTime.getHours() <= 23) {
             waitTime = doc.data().hospital_wait_time_night;
-        } else if (currentTime.getHours() === 0) { // Handle midnight
+        } else if (currentTime.getHours() === 0) { 
             waitTime = doc.data().hospital_wait_time_after_midnight;
         }
 

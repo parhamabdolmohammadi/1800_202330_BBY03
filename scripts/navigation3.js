@@ -132,7 +132,13 @@ function writeReview() {
             totalWaitTimeNIGHT: hoursWaitedNIGHT,
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
-            window.location.href = "thanks.html"; // Redirect to the thanks page
+            Swal.fire({
+                position: "middle",
+                icon: "success",
+                title: "Review Submitted Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              }); // Redirect to the thanks page // Redirect to the thanks page
         }).catch((error) => {
             console.error("Error adding review: ", error);
         });
