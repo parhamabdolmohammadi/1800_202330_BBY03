@@ -57,17 +57,17 @@ async function showPosition(position) {
 function proxReview(IDhosp, waitTimeSec) {
     let currentTime = new Date();
     if (currentTime.getHours() >= 5 && currentTime.getHours() <= 11)
-        dateVisited = "Morning 6AM - 12PM";
+        daytimeSpecified = "Morning 6AM - 12PM";
     else if (currentTime.getHours() > 11 && currentTime.getHours() <= 17)
-        dateVisited = "Afternoon 12PM - 6PM";
+        daytimeSpecified = "Afternoon 12PM - 6PM";
     else if (currentTime.getHours() > 17 && currentTime.getHours() <= 23)
-        dateVisited = "Night 6PM - 12AM";
+        daytimeSpecified = "Night 6PM - 12AM";
     else if (currentTime.getHours() === 24 && currentTime.getHours() >= 0)
-        dateVisited = "Midnight 12PM - 6AM";
+        daytimeSpecified = "Midnight 12PM - 6AM";
     else
-        dateVisited = "Error";
+        daytimeSpecified = "Error";
 
-    let daytimeSpecified = currentTime.getDate() + "-" + currentTime.getMonth() + "-" + currentTime.getFullYear();
+    let dateVisited = currentTime.getDate() + "-" + currentTime.getMonth() + "-" + currentTime.getFullYear();
 
     /*
      * PLEASE COMMENT THIS NEXT LINE BEFORE ACTUALLY USING IT TO CALCULATE TIME

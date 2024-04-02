@@ -88,6 +88,7 @@ function displayHospitalsDynamically(collection) {
           newcard.querySelector('.card-address').innerHTML = details;
           newcard.querySelector('.card-img-top').src = `./images/${hospitalCode}.jpg`;
           newcard.querySelector('a').href = "navigation2.html?docID=" + docID;
+<<<<<<< HEAD
           newcard.querySelector('i').id = 'save-' + docID;   
           newcard.querySelector('i').onclick = () => updateBookmark(docID);
 
@@ -98,7 +99,19 @@ function displayHospitalsDynamically(collection) {
                 document.getElementById( 'save-' + docID ).innerText = 'bookmark';
             }
         } )
+=======
+          newcard.querySelector('i').id = 'save-' + docID;   //guaranteed to be unique
+        newcard.querySelector('i').onclick = () => updateBookmark(docID);
+>>>>>>> 4ba139ced172386c6c2444e506d32752443576f3
  
+        currentUser.get().then( userDoc => {
+            //get the user name
+            var bookmarks = userDoc.data().bookmarks;
+            if ( bookmarks && bookmarks.includes( docID ) ) {
+                document.getElementById( 'save-' + docID ).innerText = 'bookmark';
+            }
+        } )
+        
           document.getElementById(collection + "-go-here").appendChild(newcard);
         })
       })
@@ -107,7 +120,11 @@ function displayHospitalsDynamically(collection) {
       });
   }
   
+<<<<<<< HEAD
 
+=======
+//   displayHospitalsDynamically("hospitals");
+>>>>>>> 4ba139ced172386c6c2444e506d32752443576f3
   function displayTime() {
     var currentDate = new Date();
     var hours = currentDate.getHours();
