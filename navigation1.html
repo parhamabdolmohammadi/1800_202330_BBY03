@@ -53,6 +53,10 @@
     padding: 0;
   }
 
+  a:hover {
+      color: honeydew;
+    }
+
     
   </style>
 
@@ -76,20 +80,17 @@ background-color: #444;
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">Sign-up</a>
-          </li>
+          
+
           <li>
             <a class="nav-link" href="./login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
+        
                       <li class="nav-item">
               <a class="nav-link" href="./saved.html">Saved</a>
+            </li>
+          </li>
+                      <li class="nav-item">
+              <a class="nav-link" href="./map.html">Map</a>
             </li>
         </ul>
 
@@ -113,11 +114,7 @@ background-color: #444;
   <div  class=" row row-cols-1 row-cols-md-2 g-4" id="background"
   >
 
-  <form style="width: 95vw; padding-left: 5vw;"  class="d-flex" role="search">
-    
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-primary btn-lg" type="submit">Search</button>
-  </form>
+
     <h1>Hospitals</h1>
     <!-- Here is the container for cards  -->
     <div  class="container ">
@@ -140,7 +137,7 @@ background-color: #444;
 <!--Template for the hike cards-->
 <template id="HositalCardTemplate">
   <div class="col ghol">
-    <div class="card" style="width:400px; height: 500px;">
+    <div class="card" style="width:320px; height: 530px;">
       <img style="width: stretch; height: 200px;" src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/hospital-svgrepo-com (1).svg"  alt=""><h5 style="display: inline;" class="card-title">Card Title</h5></div>
@@ -148,7 +145,7 @@ background-color: #444;
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/update-alt-svgrepo-com.svg"  alt=""><p style="display: inline;" >Last Updated:</p></div>
         <div class="card-div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display: inline;" class="card-update">update</p></div>
         <div class="card-div"><img class="icon-star1 icon2" id src="./images/location-pin-svgrepo-com (2).svg"  alt=""><p style="display: inline;" class="card-address">3935 Kincaid St, Burnaby, BC V5G 2X6</p></div><br>
-        <div style="float: right;"><i class="material-icons">bookmark_border</i><a class="btn btn-primary btn-lg">Details</a></div> 
+        <div style="float: right;"><i class="material-icons">bookmark_border</i><a style="background-color: gray;" class="btn  btn-lg">Details</a></div> 
       </div>
     </div>
   </div>

@@ -83,21 +83,16 @@ style="
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a  class="nav-link active" aria-current="page" href="./main.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">Sign-up</a>
-          </li>
           <li>
             <a class="nav-link" href="./login.html">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="./saved.html">Saved</a>
           </li>
+        </li>
+        <li class="nav-item">
+<a class="nav-link" href="./map.html">Map</a>
+</li>
         </ul>
         <a class="nav-link" id="logout" href="#">
           <img src="./images/logout-svgrepo-com (1).svg" alt="logout icon" width="30" height="24"
@@ -115,10 +110,10 @@ style="
     <img id="hospital_image" class="card-img-top" alt="...">
     <div class="card-body"> 
       <h5 class="card-title" id="hopital_name">Vancouver General Hospital</h5>
-      <p class="card-text"><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com.svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com (1).svg" alt=""><img class="icon-star" src="./images/stars-svgrepo-com (1).svg" alt=""> <span style="padding-top: 30px;" class="star-rating-number">3.1</span></p>
+      <p class="card-text"><span style="padding-top: 30px;" id="address"></span></p>
       <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/hospital-1214-svgrepo-com.svg" alt="">general hospital</p>
       <p class="card-text" ><img style="padding-right: 2px;"  class="icon-star" src="images/location-pin-svgrepo-com (1).svg" alt=""><span id="hospital-address"></span></p>
-      <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/clock-three-svgrepo-com.svg" alt="">Open - closes 10 am</p>
+      
       <div class="card w-50 " style="margin: 0 auto; text-align: center;">
         <!--*************************************************-->
            
@@ -159,10 +154,11 @@ style="
             </div></li>
           <li><label>date: </label>&nbsp;&nbsp;&nbsp;<input type="date" id="date" name="date" /></li>
           <li><p style="margin-bottom: 1px;">wait-time:</p>
-            <label for="hour">&nbsp;&nbsp;&nbsp;hours:</label>
-            &nbsp;&nbsp;&nbsp;
-            <input id="hours-waited" type="number" max="23" min="0" maxlength="2"/>
-            <label for="hour">minutes:</label>&nbsp;&nbsp;&nbsp;<input id="minutes-waited" type="number" min="0" max="59" maxlength="2" /></li>
+            <br>
+            <label for="hour">hours:</label>
+            &nbsp;&nbsp;
+            <input id="hours-waited" type="number" max="23" min="0" maxlength="2"/><br><br>
+            <label for="hour">minutes:</label>&nbsp;&nbsp;&nbsp;<input id="minutes-waited" type="number" min="0" max="59" maxlength="2" /></li><br><br>
             <input style="float: right; margin-right: 50px;" id="reviewForm" class="btn btn-secondary" type="button" value="Submit" />
         </ul>
       
