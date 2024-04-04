@@ -65,8 +65,8 @@ function writeReview() {
          db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
             reviewer : user.displayName,
             email: user.email,
-            daytime: daytimeSpecified,
-            date :dateVisited,      
+            daytime: dateVisited,
+            date :daytimeSpecified,      
             hours : hoursWaited,
             minutes : minutesWaited
          }).then(() => {
@@ -93,15 +93,15 @@ let map, lat, lng, hospID;
 // var closest = 100, closestID;
 
 
-// getLocation();
+getLocation();
 
-// function getLocation() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition);
-//     } else {
-//         console.log("Browser doesn't support geolocation.");
-//     }
-// }
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Browser doesn't support geolocation.");
+    }
+}
 
 
 let ID = localStorage.getItem('hospitalDocID');
@@ -133,9 +133,7 @@ async function showPosition(position) {
 
 }
 
-showPosition();
-
-//initMap();
+initMap();
 
 async function initMap() {
     // The location of Uluru
@@ -169,61 +167,63 @@ async function initMap() {
         content: pinUser.element,
     });
 }
-// function writeReviewUpdate() {
-//     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
-//     let dateVisited = document.getElementById("date").value;
-//     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
-//     let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
 
-//     let hoursWaitedAM = 0;
-//     let hoursWaitedPM = 0;
-//     let hoursWaitedNIGHT = 0;
-//     let hoursWaitedMidNight = 0;
 
-//     switch (daytimeSpecified) {
-//         case "Morning 6AM - 12PM":
-//             hoursWaitedAM = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Afternoon 12PM - 6PM":
-//             hoursWaitedPM = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Night 6PM - 12AM":
-//             hoursWaitedNIGHT = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Midnight 12AM - 6AM":
-//             hoursWaitedMidNight = hoursWaited * 60 + minutesWaited;
-//             break;
-//         default:
-//             break;
-//     }
+function writeReviewUpdate() {
+    let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
+    let dateVisited = document.getElementById("date").value;
+    let hoursWaited = parseInt(document.getElementById("hours-waited").value);
+    let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
 
-//     var user = firebase.auth().currentUser;
-//     if (user) {
-//         var currentUser = db.collection("users").doc(user.uid);
-//         var userID = user.uid;
-//         hospitalDocID = localStorage.getItem("hospitalDocID");
+    let hoursWaitedAM = 0;
+    let hoursWaitedPM = 0;
+    let hoursWaitedNIGHT = 0;
+    let hoursWaitedMidNight = 0;
 
-//         db.collection("hospitals").doc(hospitalDocID).update({
-//             reviewer: user.displayName,
-//             email: user.email,
-//             date: dateVisited,
-//             daytime: daytimeSpecified,
-//             hours: hoursWaited,
-//             minutes: minutesWaited,
-//             totalWaitTimeAM: hoursWaitedAM,
-//             totalWaitTimePM: hoursWaitedPM,
-//             totalWaitTimeNIGHT: hoursWaitedNIGHT,
-//             totalWaitTimeMidNight: hoursWaitedMidNight,
-//         }).then(() => {
-//     alert("working");
-//             window.location.href = "thanks.html"; // Redirect to the thanks page
-//         }).catch((error) => {
-//             console.error("Error adding review: ", error);
-//         });
-//     } else {
-//         console.log("No user is signed in");
-//         window.location.href = 'navigation1.html';
-//     }
-// }
+    switch (daytimeSpecified) {
+        case "Morning 6AM - 12PM":
+            hoursWaitedAM = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Afternoon 12PM - 6PM":
+            hoursWaitedPM = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Night 6PM - 12AM":
+            hoursWaitedNIGHT = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Midnight 12AM - 6AM":
+            hoursWaitedMidNight = hoursWaited * 60 + minutesWaited;
+            break;
+        default:
+            break;
+    }
 
-// document.getElementById("reviewForm").addEventListener("click", writeReviewUpdate);
+    var user = firebase.auth().currentUser;
+    if (user) {
+        var currentUser = db.collection("users").doc(user.uid);
+        var userID = user.uid;
+        hospitalDocID = localStorage.getItem("hospitalDocID");
+
+        db.collection("hospitals").doc(hospitalDocID).update({
+            reviewer: user.displayName,
+            email: user.email,
+            date: dateVisited,
+            daytime: daytimeSpecified,
+            hours: hoursWaited,
+            minutes: minutesWaited,
+            totalWaitTimeAM: hoursWaitedAM,
+            totalWaitTimePM: hoursWaitedPM,
+            totalWaitTimeNIGHT: hoursWaitedNIGHT,
+            totalWaitTimeMidNight: hoursWaitedMidNight,
+        }).then(() => {
+    alert("working");
+            window.location.href = "thanks.html"; // Redirect to the thanks page
+        }).catch((error) => {
+            console.error("Error adding review: ", error);
+        });
+    } else {
+        console.log("No user is signed in");
+        window.location.href = 'navigation1.html';
+    }
+}
+
+document.getElementById("reviewForm").addEventListener("click", writeReviewUpdate);
