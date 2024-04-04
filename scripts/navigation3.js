@@ -35,25 +35,108 @@ function saveHospitalDocumentIDAndRedirect(){
 
 saveHospitalDocumentIDAndRedirect();
 
-function writeReview() {
-    console.log("inside write review");
-    let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
-    console.log(daytimeSpecified);
-    let dateVisited = document.getElementById("date").value;
-    console.log(dateVisited);
-    let hoursWaited = document.getElementById("hours-waited").value;
-    hoursWaited = Math.floor(hoursWaited)
-    if(hoursWaited >= 24 || hoursWaited < 0) {
-        return;
-    }
-    console.log(hoursWaited);
-    let minutesWaited = document.getElementById("minutes-waited").value;
-    minutesWaited = Math.floor(minutesWaited)
-    if(minutesWaited >= 60 || minutesWaited < 0) {
-        return;
-    }
-    console.log(minutesWaited);
+// function writeReview() {
+//     console.log("inside write review");
+//     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
+//     console.log(daytimeSpecified);
+//     let dateVisited = document.getElementById("date").value;
+//     console.log(dateVisited);
+//     let hoursWaited = document.getElementById("hours-waited").value;
+//     hoursWaited = Math.floor(hoursWaited)
+//     if(hoursWaited >= 24 || hoursWaited < 0) {
+//         return;
+//     }
+//     console.log(hoursWaited);
+//     let minutesWaited = document.getElementById("minutes-waited").value;
+//     minutesWaited = Math.floor(minutesWaited)
+//     if(minutesWaited >= 60 || minutesWaited < 0) {
+//         return;
+//     }
+//     console.log(minutesWaited);
 
+
+//     var user = firebase.auth().currentUser;
+//     if (user) {
+//         var currentUser = db.collection("users").doc(user.uid);
+//         var userID = user.uid;
+//         hospitalDocID = localStorage.getItem("hospitalDocID");
+
+//         console.log(user)
+//          db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
+//             reviewer : user.displayName,
+//             email: user.email,
+//             daytime: dateVisited,
+//             date :daytimeSpecified,      
+//             hours : hoursWaited,
+//             minutes : minutesWaited
+//          }).then(() => {
+//             Swal.fire({
+//                 position: "middle",
+//                 icon: "success",
+//                 title: "Review Submitted Successfully",
+//                 showConfirmButton: false,
+//                 timer: 1500
+//               }); // Redirect to the thanks page
+//          });
+//     } else {
+//         console.log("No user is signed in");
+//         window.location.href = 'navigation1.html';
+//     }
+// }
+
+// document.getElementById("reviewForm").addEventListener("click", writeReview);
+
+function writeReview() {
+    let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
+    let dateVisited = document.getElementById("date").value;
+    let hoursWaited = parseInt(document.getElementById("hours-waited").value);
+    let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
+
+    if(hoursWaited >= 24 || hoursWaited < 0) {
+        Swal.fire({
+            position: "middle",
+            icon: "error",
+            title: "hours should be in range of 0 to 24",
+            showConfirmButton: false,
+            timer: 1500
+          }); // Re
+                return;
+            }
+            console.log(hoursWaited);
+          
+            minutesWaited = Math.floor(minutesWaited)
+            if(minutesWaited >= 60 || minutesWaited < 0) {
+                Swal.fire({
+                    position: "middle",
+                    icon: "error",
+                    title: "minutes should be in range of 0 to 60",
+                    showConfirmButton: false,
+                    timer: 1500
+                  }); // Re
+                return;
+            }
+
+    let hoursWaitedAM = 0;
+    let hoursWaitedPM = 0;
+    let hoursWaitedNIGHT = 0;
+    let hoursWaitedMidNight = 0;
+
+    switch (daytimeSpecified) {
+        case "Morning 6AM - 12PM":
+            hoursWaitedAM = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Afternoon 12PM - 6PM":
+            hoursWaitedPM = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Night 6PM - 12AM":
+            hoursWaitedNIGHT = hoursWaited * 60 + minutesWaited;
+            break;
+        case "Midnight 12AM - 6AM":
+            hoursWaitedMidNight = hoursWaited * 60 + minutesWaited;
+            break;
+        default:
+            break;
+    }
 
     var user = firebase.auth().currentUser;
     if (user) {
@@ -61,23 +144,36 @@ function writeReview() {
         var userID = user.uid;
         hospitalDocID = localStorage.getItem("hospitalDocID");
 
-        console.log(user)
-         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
-            reviewer : user.displayName,
+        db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
+            reviewer: user.displayName,
             email: user.email,
+<<<<<<< HEAD
             daytime: dateVisited,
             date :daytimeSpecified,      
             hours : hoursWaited,
             minutes : minutesWaited
          }).then(() => {
+=======
+            daytime: daytimeSpecified,
+            date: dateVisited,
+            hours: hoursWaited,
+            minutes: minutesWaited,
+            totalWaitTimeAM: hoursWaitedAM,
+            totalWaitTimePM: hoursWaitedPM,
+            totalWaitTimeNIGHT: hoursWaitedNIGHT,
+            totalWaitTimeMidNight: hoursWaitedMidNight,
+        }).then(() => {
+>>>>>>> refs/remotes/origin/main
             Swal.fire({
                 position: "middle",
                 icon: "success",
                 title: "Review Submitted Successfully",
                 showConfirmButton: false,
                 timer: 1500
-              }); // Redirect to the thanks page
-         });
+              }); // Redirect to the thanks page // Redirect to the thanks page
+        }).catch((error) => {
+            console.error("Error adding review: ", error);
+        });
     } else {
         console.log("No user is signed in");
         window.location.href = 'navigation1.html';
@@ -85,8 +181,6 @@ function writeReview() {
 }
 
 document.getElementById("reviewForm").addEventListener("click", writeReview);
-
-
 
 
 let map, lat, lng, hospID;
@@ -167,6 +261,14 @@ async function initMap() {
         content: pinUser.element,
     });
 }
+<<<<<<< HEAD
+=======
+// function writeReview() {
+//     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
+//     let dateVisited = document.getElementById("date").value;
+//     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
+//     let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
+>>>>>>> refs/remotes/origin/main
 
 
 function writeReviewUpdate() {
@@ -180,6 +282,7 @@ function writeReviewUpdate() {
     let hoursWaitedNIGHT = 0;
     let hoursWaitedMidNight = 0;
 
+<<<<<<< HEAD
     switch (daytimeSpecified) {
         case "Morning 6AM - 12PM":
             hoursWaitedAM = hoursWaited * 60 + minutesWaited;
@@ -227,3 +330,28 @@ function writeReviewUpdate() {
 }
 
 document.getElementById("reviewForm").addEventListener("click", writeReviewUpdate);
+=======
+//         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
+//             reviewer: user.displayName,
+//             email: user.email,
+//             daytime: dateVisited,
+//             date: daytimeSpecified,
+//             hours: hoursWaited,
+//             minutes: minutesWaited,
+//             totalWaitTimeAM: hoursWaitedAM,
+//             totalWaitTimePM: hoursWaitedPM,
+//             totalWaitTimeNIGHT: hoursWaitedNIGHT,
+//             totalWaitTimeMidNight: hoursWaitedMidNight,
+//         }).then(() => {
+//             window.location.href = "thanks.html"; // Redirect to the thanks page
+//         }).catch((error) => {
+//             console.error("Error adding review: ", error);
+//         });
+//     } else {
+//         console.log("No user is signed in");
+//         window.location.href = 'navigation1.html';
+//     }
+// }
+
+// document.getElementById("reviewForm").addEventListener("click", writeReview);
+>>>>>>> refs/remotes/origin/main

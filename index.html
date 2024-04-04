@@ -19,17 +19,12 @@
 
     <!-- Other libraries go here -->
     <style>
-      #background {
-        background-image: url(./images/frame-medical-equipment-desk.jpg);
-        background-repeat: no-repeat;
+      footer {
+        color: black;
+      }
 
-        height: 70vh;
-        object-fit: cover;
-        background-size: 100% 100%;
-        background-position: center;
-        display: grid;
-        justify-content: center;
-        align-items: center;
+      .border-top-black {
+        border-top: 1px solid black;
       }
     </style>
     <!-- Link to styles of your own -->
@@ -46,23 +41,25 @@
     />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
   </head>
-  <body>
+  <body
+    style="
+      background: url(./images/frame-medical-equipment-desk.jpg) center / cover
+        no-repeat;
+      background-color: #444;
+    "
+  >
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <nav
-      style="padding-bottom: 0; padding-top: 0"
-      class="navbar navbar-expand-lg bg-body-tertiary"
-    >
-      <div class="container2 container-fluid navbar-color">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid navbar-color">
         <img
           class="float-left"
           src="./images/logo.jpg"
           alt=""
           width="30"
           height="30"
-          style="margin: auto auto"
         />
         <a class="navbar-brand" href="./index.html" style="margin-left: 1em">
           Emergency Time App</a
@@ -80,19 +77,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html"
-                >Home</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./login.html">Sign-up</a>
-            </li>
             <li>
               <a class="nav-link" href="./login.html">Login</a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
+              <a class="nav-link" href="./saved.html">Saved</a>
             </li>
           </ul>
           <a class="nav-link" id="logout" href="#">
@@ -103,13 +93,13 @@
               height="24"
               class="d-inline-block align-text-top"
             />
-            Log out </a
+            Log out             </a
           >
         </div>
       </div>
     </nav>
 
-    <div id="background" class="container2 text-center">
+    <div id="background" style="margin: 100px" class="container2 text-center">
       <div class="px-4 py-5">
         <img
           class="d-block mx-auto mb-4"
@@ -125,7 +115,7 @@
           </p>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
             <a
-              href="waitTime.html"
+              href="navigation1.html"
               class="btn btn-secondary btn-lg px-4 gap-3"
               role="button"
             >
@@ -143,12 +133,9 @@
     </div>
 
     <footer
-      style="margin-top: 0.5rem"
-      class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top"
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top-black"
     >
-      <p class="col-md-4 mb-0 text-muted">
-        &copy; 2024 Emergency Time App, Team BBY 3.
-      </p>
+      <p class="col-md-4 mb-0">&copy; 2024 Emergency Time App, Team BBY 3.</p>
       <a
         href="/"
         class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
@@ -167,7 +154,7 @@
     <script src="./scripts/firebaseAPI_BBY03.js"></script>
     <script src="./scripts/scripts.js"></script>
     <script>
-      logout();
+      // logout();
     </script>
   </body>
 </html>

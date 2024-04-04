@@ -10,9 +10,11 @@ function displayHospitalInfo() {
         .then( doc => {
             hospitalName = doc.data().name;
             hospitalCode = doc.data().code;
+            hospitalAddress = doc.data().address;
             
             // only populate title, and image
             document.getElementById( "hopital_name" ).innerHTML = hospitalName;
+            document.getElementById( "address" ).innerHTML = hospitalAddress;
             let imgEvent = document.getElementById("hospital_image");
             imgEvent.src = "./images/" + hospitalCode + ".jpg";
             document.getElementById("hospital_anchor").href = "navigaton3.html?docID=" + ID;
@@ -105,7 +107,7 @@ function displayWatiTime()  {
             waitTime = doc.data().hospital_wait_time_afternoon;
         } else if (currentTime.getHours() > 17 && currentTime.getHours() <= 23) {
             waitTime = doc.data().hospital_wait_time_night;
-        } else if (currentTime.getHours() === 0) { // Handle midnight
+        } else if (currentTime.getHours() === 0) { 
             waitTime = doc.data().hospital_wait_time_after_midnight;
         }
 

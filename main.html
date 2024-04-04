@@ -29,28 +29,28 @@
     href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
   />
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <style>
-    #background {
-      background-image: url(./images/frame-medical-equipment-desk.jpg);
-      background-repeat: no-repeat;
+  <style>footer  {
+    color: black;
 
-      height: 70vh;
-      object-fit: cover;
-      background-size: 100% 100%;
-      background-position: center;
-      display: grid;
-
- 
-    }
+  }
+  
+  .border-top-black {
+  border-top: 1px solid black;
+}</style>
   </style>
-<body>
+  <body  
+  style="
+    background: url(./images/frame-medical-equipment-desk.jpg) center /
+      cover no-repeat;
+    background-color: #444;
+  ">
   <!------------------------------>
   <!-- Your HTML Layout go here -->
   <!------------------------------>
   <!-- Stuff for body goes here -->
-  <nav style="padding-bottom: 0; padding-top: 0" class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid navbar-color">
-      <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30" style="margin: auto auto">
+      <img class="float-left" src="./images/logo.jpg" alt="" width="30" height="30">
       <a class="navbar-brand" href="./index.html" style="margin-left: 1em;"> Emergency Time App</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,18 +58,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./login.html">Sign-up</a>
-          </li>
+          
+          
           <li>
             <a class="nav-link" href="./login.html">Login</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="./saved.html">Saved</a>
           </li>
@@ -82,49 +76,50 @@
       </div>
     </div>
   </nav>
-<div id="background">
+
   
     
-    <div class="px-4 py-5 my-5 text-center">
-      <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
-      <h1 class="display-5 fw-bold">Welcome to Emergency Time App</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center btn-group-vertical">
-          <a href="./map.html" type="button" class="btn btn-secondary btn-lg px-4 gap-3 w-50" style="margin: 0 auto">Search Hospitals</a>
-          <a href="navigation1.html" class="btn btn-outline-secondary btn-lg px-4 w-50" style="margin: 0 auto">Hospital Wait Times</a>
+    <nav id="navbarPlaceholder"></nav>
+    <div id="background">
+      <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="./images/logo.jpg" alt="" width="72" height="57">
+        <h1 class="display-5 fw-bold">Welcome to Emergency Time App</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">The app that quickly takes you the emergency you need.</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center btn-group-vertical">
+            <a href="./map.html" type="button" class="btn btn-secondary btn-lg px-4 gap-3 w-50" style="margin: 0 auto">Search Hospitals</a>
+            <a href="navigation1.html" class="btn btn-outline-secondary btn-lg px-4 w-50" style="margin: 0 auto">Hospital Wait Times</a>
+          </div>
         </div>
       </div>
     </div>
-    <nav id="navbarPlaceholder"></nav>
-  
     <!-- the body of your page goes here -->
     <!-- stuff -->
-   
+    <!-- <div class="container-fluid bg-light text-dark p-5">
+      <div class="container bg-light p-5">
+        <h1 class="display-4">
+          Good morning, <span id="name-goes-here"></span>
+        </h1>
+        <p>Your wait time is safe with us.</p>
+      </div>
+    </div> -->
   
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
   
     <br />
     <br />
-</div>
-<div class="container-fluid bg-light text-dark p-5">
-  <div class="container bg-light p-5">
-    <h1 class="display-4">
-      Good morning, <span id="name-goes-here"></span>
-    </h1>
-    <p>Your wait time is safe with us.</p>
-  </div>
-</div>
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">&copy; 2024 Emergency Time App, Team BBY 03.</p>
-    <a href="/"
-      class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32">
-        <use xlink:href="#bootstrap" />
-      </svg>
-    </a>
-  </footer>
+
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top-black">
+  <p class="col-md-4 mb-0 ">&copy; 2024 Emergency Time App, Team BBY 3.</p>
+  <a href="/"
+    class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <svg class="bi me-2" width="40" height="32">
+      <use xlink:href="#bootstrap" />
+    </svg>
+  </a>
+</footer>
 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->

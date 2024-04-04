@@ -58,8 +58,54 @@ function getBookmarks(user) {
                     var hospitalCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
                     var hospitalAddress = doc.data().address; //gets the length field
                     var docID = doc.id;
+                    var lastUpdate = doc.data().last_updated.toDate();
+                    var waitTime;
+                    let currentTime = new Date();
+    let currentHour = currentTime.getHours();
+    let orderByField;
+ 
+    // Determine the field to order by based on the current time
+    if (currentHour >= 5 && currentHour <= 11) {
+        orderByField = "hospital_wait_time_morning";
+    } else if (currentHour > 11 && currentHour <= 17) {
+        orderByField = "hospital_wait_time_afternoon";
+    } else if (currentHour > 17 && currentHour <= 23) {
+        orderByField = "hospital_wait_time_night";
+    } else {
+        orderByField = "hospital_wait_time_after_midnight";
+    }
+
+
+                     // Determine wait time based on current hour
+          if (currentHour >= 5 && currentHour <= 11) {
+            waitTime = doc.data().hospital_wait_time_morning;    
+         } else if (currentHour > 11 && currentHour <= 17){
+            waitTime = doc.data().hospital_wait_time_afternoon;
+         } else if (currentHour > 17 && currentHour <= 23){
+            waitTime = doc.data().hospital_wait_time_night;
+         } else if (currentHour == 24 || currentHour >= 0){
+            waitTime = doc.data().hospital_wait_time_after_midnight;
+         }
+
+
+
+
+
+
+
                     let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
                     //update title and some pertinant information
+                    newcard.querySelector('.card-time').innerHTML = waitTime <= 1 ? waitTime + " Hour" : waitTime + " Hours";
+
+                    var waitTimeColour = newcard.querySelector('.card-time');
+          if (waitTime >= 0 && waitTime < 2) {
+            waitTimeColour.classList.add('green');
+          } else if (waitTime >= 2 && waitTime < 4) {
+            waitTimeColour.classList.add('orange');
+          } else {
+            waitTimeColour.classList.remove('green', 'orange');
+          }
+                    newcard.querySelector('.card-update').innerHTML = lastUpdate.toLocaleString(); // Convert date to string format
                     newcard.querySelector('.card-title').innerHTML = title;
                 newcard.querySelector('.card-address').innerHTML = hospitalAddress;
                 // newcard.querySelector('.card-text').innerHTML = details;
