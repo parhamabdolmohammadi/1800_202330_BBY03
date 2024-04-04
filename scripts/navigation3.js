@@ -1,33 +1,33 @@
 function displayHospitalInfo() {
-    let params = new URL( window.location.href ); //get URL of search bar
-    let ID = params.searchParams.get( "docID" ); //get value for key "id"
-    console.log( ID );
+    let params = new URL(window.location.href); //get URL of search bar
+    let ID = params.searchParams.get("docID"); //get value for key "id"
+    console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
-    db.collection( "hospitals" )
-        .doc( ID )
+    db.collection("hospitals")
+        .doc(ID)
         .get()
-        .then( doc => {
+        .then(doc => {
             hospitalName = doc.data().name;
             hospitalCode = doc.data().code;
             hospitalAddress = doc.data().address;
-            
+
             console.log(hospitalCode);
-            
+
             // only populate title, and image
-            document.getElementById( "hopital_name" ).innerHTML = hospitalName;
-            document.getElementById( "hospital-address" ).innerHTML = hospitalAddress;
+            document.getElementById("hopital_name").innerHTML = hospitalName;
+            document.getElementById("hospital-address").innerHTML = hospitalAddress;
             console.log(hospitalAddress)
             let imgEvent = document.getElementById("hospital_image");
             imgEvent.src = "./images/" + hospitalCode + ".jpg";
-           
-                
-        } );
+
+
+        });
 }
 
 displayHospitalInfo();
 
-function saveHospitalDocumentIDAndRedirect(){
+function saveHospitalDocumentIDAndRedirect() {
     let params = new URL(window.location.href) //get the url from the search bar
     let ID = params.searchParams.get("docID");
     localStorage.setItem('hospitalDocID', ID);
@@ -92,29 +92,29 @@ function writeReview() {
     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
     let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
 
-    if(hoursWaited >= 24 || hoursWaited < 0) {
+    if (hoursWaited >= 24 || hoursWaited < 0) {
         Swal.fire({
             position: "middle",
             icon: "error",
             title: "hours should be in range of 0 to 24",
             showConfirmButton: false,
             timer: 1500
-          }); // Re
-                return;
-            }
-            console.log(hoursWaited);
-          
-            minutesWaited = Math.floor(minutesWaited)
-            if(minutesWaited >= 60 || minutesWaited < 0) {
-                Swal.fire({
-                    position: "middle",
-                    icon: "error",
-                    title: "minutes should be in range of 0 to 60",
-                    showConfirmButton: false,
-                    timer: 1500
-                  }); // Re
-                return;
-            }
+        }); // Re
+        return;
+    }
+    console.log(hoursWaited);
+
+    minutesWaited = Math.floor(minutesWaited)
+    if (minutesWaited >= 60 || minutesWaited < 0) {
+        Swal.fire({
+            position: "middle",
+            icon: "error",
+            title: "minutes should be in range of 0 to 60",
+            showConfirmButton: false,
+            timer: 1500
+        }); // Re
+        return;
+    }
 
     let hoursWaitedAM = 0;
     let hoursWaitedPM = 0;
@@ -147,13 +147,6 @@ function writeReview() {
         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
             reviewer: user.displayName,
             email: user.email,
-<<<<<<< HEAD
-            daytime: dateVisited,
-            date :daytimeSpecified,      
-            hours : hoursWaited,
-            minutes : minutesWaited
-         }).then(() => {
-=======
             daytime: daytimeSpecified,
             date: dateVisited,
             hours: hoursWaited,
@@ -163,14 +156,13 @@ function writeReview() {
             totalWaitTimeNIGHT: hoursWaitedNIGHT,
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
->>>>>>> refs/remotes/origin/main
             Swal.fire({
                 position: "middle",
                 icon: "success",
                 title: "Review Submitted Successfully",
                 showConfirmButton: false,
                 timer: 1500
-              }); // Redirect to the thanks page // Redirect to the thanks page
+            }); // Redirect to the thanks page // Redirect to the thanks page
         }).catch((error) => {
             console.error("Error adding review: ", error);
         });
@@ -187,28 +179,17 @@ let map, lat, lng, hospID;
 // var closest = 100, closestID;
 
 
-getLocation();
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Browser doesn't support geolocation.");
-    }
-}
-
-
 let ID = localStorage.getItem('hospitalDocID');
 async function showPosition(position) {
-    
+
 
     await db.collection("hospitals")
-    .doc(ID)
-    .get()
-    .then(doc => {
-        lat = doc.data().lat;
-        lng = doc.data().lng;
-    });
+        .doc(ID)
+        .get()
+        .then(doc => {
+            lat = doc.data().lat;
+            lng = doc.data().lng;
+        });
 
     // db.collection("hospitals").get().then((allHospitals) => {
     //     allHospitals.forEach((doc) => {
@@ -227,7 +208,7 @@ async function showPosition(position) {
 
 }
 
-initMap();
+showPosition();
 
 async function initMap() {
     // The location of Uluru
@@ -246,7 +227,7 @@ async function initMap() {
 
     let marker;
 
-    
+
 
     const pinUser = new PinElement({
         background: "#FFFFFF",
@@ -261,14 +242,11 @@ async function initMap() {
         content: pinUser.element,
     });
 }
-<<<<<<< HEAD
-=======
 // function writeReview() {
 //     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
 //     let dateVisited = document.getElementById("date").value;
 //     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
 //     let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
->>>>>>> refs/remotes/origin/main
 
 
 function writeReviewUpdate() {
@@ -282,7 +260,6 @@ function writeReviewUpdate() {
     let hoursWaitedNIGHT = 0;
     let hoursWaitedMidNight = 0;
 
-<<<<<<< HEAD
     switch (daytimeSpecified) {
         case "Morning 6AM - 12PM":
             hoursWaitedAM = hoursWaited * 60 + minutesWaited;
@@ -318,8 +295,7 @@ function writeReviewUpdate() {
             totalWaitTimeNIGHT: hoursWaitedNIGHT,
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
-    alert("working");
-            window.location.href = "thanks.html"; // Redirect to the thanks page
+            alert("working");
         }).catch((error) => {
             console.error("Error adding review: ", error);
         });
@@ -330,7 +306,6 @@ function writeReviewUpdate() {
 }
 
 document.getElementById("reviewForm").addEventListener("click", writeReviewUpdate);
-=======
 //         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
 //             reviewer: user.displayName,
 //             email: user.email,
@@ -354,4 +329,3 @@ document.getElementById("reviewForm").addEventListener("click", writeReviewUpdat
 // }
 
 // document.getElementById("reviewForm").addEventListener("click", writeReview);
->>>>>>> refs/remotes/origin/main

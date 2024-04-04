@@ -1,0 +1,12 @@
+html, body {
+    height: 90vh;
+    width: 100vw;
+}
+
+footer {
+    color: black;
+  }
+
+  .border-top-black {
+    border-top: 1px solid black;
+  }

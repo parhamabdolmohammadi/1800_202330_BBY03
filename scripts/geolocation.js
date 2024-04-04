@@ -52,8 +52,8 @@ async function initMap() {
     db.collection("hospitals").get().then((allHospitals) => {
         allHospitals.forEach((doc) => {
             const priceTag = document.createElement("div");
-                priceTag.className = "price-tag";
-                priceTag.textContent = doc.data().name + ": " + doc.data().hospital_wait_time_morning;
+            priceTag.className = "price-tag";
+            priceTag.textContent = doc.data().name + ": " + doc.data().hospital_wait_time_morning + " hours";
 
             marker = new AdvancedMarkerElement({
                 map: map,
@@ -70,7 +70,7 @@ async function initMap() {
                 // });
                 priceTag.setAttribute("style", "background-color: #e14242; border-top: 8px solid #e14242;")
                 marker.content = priceTag;
-                
+
             }
 
             marker.addListener("click", () => {
