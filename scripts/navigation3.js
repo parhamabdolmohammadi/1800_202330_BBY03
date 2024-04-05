@@ -151,11 +151,8 @@ function writeReview() {
             date: dateVisited,
             hours: hoursWaited,
             minutes: minutesWaited,
-            totalWaitTimeAM: hoursWaitedAM,
-            totalWaitTimePM: hoursWaitedPM,
-            totalWaitTimeNIGHT: hoursWaitedNIGHT,
-            totalWaitTimeMidNight: hoursWaitedMidNight,
-        }).then(() => {
+        }).then(() => { 
+            updateTotalWaittime();
             Swal.fire({
                 position: "middle",
                 icon: "success",
@@ -237,7 +234,7 @@ async function initMap() {
     marker = new AdvancedMarkerElement({
         map: map,
         position: position,
-        title: "You",
+        title: "Hospital",
         gmpClickable: true,
         content: pinUser.element,
     });
@@ -283,7 +280,7 @@ function writeReviewUpdate() {
         var userID = user.uid;
         hospitalDocID = localStorage.getItem("hospitalDocID");
 
-        db.collection("hospitals").doc(hospitalDocID).update({
+        db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
             reviewer: user.displayName,
             email: user.email,
             date: dateVisited,
@@ -296,6 +293,7 @@ function writeReviewUpdate() {
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
             alert("working");
+            updateTime();
         }).catch((error) => {
             console.error("Error adding review: ", error);
         });

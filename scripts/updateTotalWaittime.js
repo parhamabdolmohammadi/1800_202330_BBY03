@@ -106,19 +106,19 @@
 function updateTime() {
     console.log("here")
     db.collection("hospitals").get().then((allHospitals) => {
-        console.log("here 1", allHospitals.docs)
+        // console.log("here 1", allHospitals)
 
-        allHospitals.docs.forEach((hospitalDoc) => {
-            console.log(hospitalDoc)
+        allHospitals.forEach((hospitalDoc) => {
+            // console.log(hospitalDoc)
             const hospitalData = hospitalDoc.data();
             let totalWaitTimeAM = 0, totalWaitTimePM = 0, totalWaitTimeNIGHT = 0, totalWaitTimeMidNight = 0;
             let totalReviewAM = 0, totalReviewPM = 0, totalReviewNIGHT = 0, totalReviewMidNight = 0;
 
-            db.collection("hospitals").doc(hospitalData.id).collection("hospitals-reviews").get().then((allReviews) => {
+            db.collection("hospitals").doc(hospitalDoc.id).collection("hospitals-reviews").get().then((allReviews) => {
                 allReviews.forEach((review) => {
                     
                     let hoursWaited = review.data().hours * 60 + review.data().minutes;
-                        console.log(hoursWaited)
+                    console.log(hoursWaited)
                     switch (review.data().daytime) {
                         case "Morning 6AM - 12PM":
                             totalReviewAM++;
@@ -165,7 +165,10 @@ function updateTime() {
                     totalReviewMidNight,
                 };
 
-                hospitalDoc.ref.update(updateObj).then(() => {
+                console.log(updateObj);
+
+                db.collection("hospitals").doc(hospitalDoc.id).update(updateObj).then(() => {
+                    updateAverage();
                     // Optional: You can do something after the update finishes
                     console.log("DONE")
                 }).catch((error) => {
