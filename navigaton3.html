@@ -1,58 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 
-  <title>Locate your hospital</title>
-  <meta name="comp1800 template" content="My 1800 App" />
+<title>Locate your hospital</title>
+<meta name="comp1800 template" content="My 1800 App" />
 
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <!-- Boostrap Library JS CDN  go here -->
-  <script src="./scripts/googlemapsAPI.js"></script>
-  
-  
-  <!-- Other libraries go here -->
+<!-- Bootstrap Library CSS CDN go here -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+<!-- Boostrap Library JS CDN  go here -->
+<script src="./scripts/googlemapsAPI.js"></script>
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link
-    type="text/css"
-    rel="stylesheet"
-    href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-  />
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <style>
-    /* Set the map container size */
-    #map {
-        height: 400px;
-        width: 100%;
-    }
-    a {
-      text-decoration: none;
-    }
+
+<!-- Other libraries go here -->
+
+<!-- Link to styles of your own -->
+<link rel="stylesheet" href="./styles/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<style>
+  /* Set the map container size */
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
   .list {
     list-style-type: none;
   }
+
   fieldset li {
     padding-top: 25px;
   }
 
   fieldset {
-    border: 1px solid #ebe7e7; 
+    border: 1px solid #ebe7e7;
     border-radius: 10px;
-    
+
   }
+
   .list-div {
     margin-bottom: 2px;
   }
@@ -63,8 +62,7 @@
   }
 </style>
 
-<body  
-style="
+<body style="
   background: url(./images/pedro-lastra-Nyvq2juw4_o-unsplash.jpg) center /
     cover no-repeat;
   background-color: #444;
@@ -89,94 +87,106 @@ style="
           <li class="nav-item">
             <a class="nav-link" href="./saved.html">Saved</a>
           </li>
-        </li>
-        <li class="nav-item">
-<a class="nav-link" href="./map.html">Map</a>
-</li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./map.html">Map</a>
+          </li>
         </ul>
         <a class="nav-link" id="logout" href="#">
           <img src="./images/logout-svgrepo-com (1).svg" alt="logout icon" width="30" height="24"
             class="d-inline-block align-text-top">
           Log out
-            </a>
+                      </a>
       </div>
     </div>
   </nav>
- 
+
 
   <br />
   <br />
   <div class="container card mb-3 contais">
     <img id="hospital_image" class="card-img-top" alt="...">
-    <div class="card-body"> 
-      <h5 class="card-title" id="hopital_name">Vancouver General Hospital</h5>
+    <div class="card-body">
+      <h5 class="card-title" id="hopital_name"></h5>
       <p class="card-text"><span style="padding-top: 30px;" id="address"></span></p>
-      <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/hospital-1214-svgrepo-com.svg" alt="">general hospital</p>
-      <p class="card-text" ><img style="padding-right: 2px;"  class="icon-star" src="images/location-pin-svgrepo-com (1).svg" alt=""><span id="hospital-address"></span></p>
-      
-      <div class="card w-50 " style="margin: 0 auto; text-align: center;">
-        <!--*************************************************-->
-           
-             <div class="ratio ratio-1x1" id="here"></div>
-             <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.408050538696!2d-123.018461523513!3d49.24971127138796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676e77e4f372b%3A0xf79d5ab0081a6626!2sBurnaby%20Hospital!5e0!3m2!1spt-BR!2sca!4v1709593616903!5m2!1spt-BR!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-           </div>
- 
-           <!--*************************************************-->
-         </div>
-      <p class="card-text">&nbsp;</p></p>
-      <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg" alt="">Wheelchair Accessible Entrance</p></p>
-      <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg" alt="">Accessible Parking</p></p>
-     
-     
-     
-     
-     
-     
-      <fieldset style="padding: 20px; margin-bottom: 20px;">
-        <legend>Enter Your Wait Time</legend>
-        <ul class="list">
-          <li><span style="display: block; padding-bottom:4px;">Daytime:</span>
-            <div class="list-div">
-              <label for="morning">&nbsp;&nbsp;&nbsp; Morning 6AM - 12PM </label>
-              <input type="radio" id="morning" name="daytime" value="Morning 6AM - 12PM"/>
-            </div>
-            <div class="list-div">
-              <label for="morning">&nbsp;&nbsp;&nbsp; Afternoon 12PM - 6PM  </label>
-              <input type="radio" id="afternoon" name="daytime" value="Afternoon 12PM - 6PM"  checked="checked"/>
-            </div>
-            <div class="list-div">
-              <label for="morning">&nbsp;&nbsp;&nbsp; Night 6PM - 12AM </label>
-              <input type="radio" id="night" name="daytime" value="Night 6PM - 12AM"/>
-            </div>
-            <div class="list-div">
-              <label for="morning">&nbsp;&nbsp;&nbsp; Midnight 12PM - 6AM</label>
-              <input type="radio" id="midnight" name="daytime" value="Midnight 12PM - 6AM"/>
-            </div></li>
-          <li><label>date: </label>&nbsp;&nbsp;&nbsp;<input type="date" id="date" name="date" /></li>
-          <li><p style="margin-bottom: 1px;">wait-time:</p>
-            <br>
-            <label for="hour">hours:</label>
-            &nbsp;&nbsp;
-            <input id="hours-waited" type="number" max="23" min="0" maxlength="2"/><br><br>
-            <label for="hour">minutes:</label>&nbsp;&nbsp;&nbsp;<input id="minutes-waited" type="number" min="0" max="59" maxlength="2" /></li><br><br>
-            <input style="float: right; margin-right: 50px;" id="reviewForm" class="btn btn-secondary" type="button" value="Submit" />
-        </ul>
-      
-        <!-- <label><input type="checkbox" id="happy" name="happy"/>Happy?</label><br/> -->
-        
-        
+      <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/hospital-1214-svgrepo-com.svg"
+          alt=""></p>
+      <p class="card-text"><img style="padding-right: 2px;" class="icon-star"
+          src="..." alt=""><span id="hospital-address"></span></p>
 
-      </fieldset>
-      <!-- <form >
+      <!-- <div class="card w-50 " style="margin: 0 auto; text-align: center;"> -->
+        <!--*************************************************-->
+
+        <div class="ratio ratio-1x1" id="here"></div>
+        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.408050538696!2d-123.018461523513!3d49.24971127138796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676e77e4f372b%3A0xf79d5ab0081a6626!2sBurnaby%20Hospital!5e0!3m2!1spt-BR!2sca!4v1709593616903!5m2!1spt-BR!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+      <!-- </div> -->
+
+      <!--*************************************************-->
+    </div>
+    <p class="card-text">&nbsp;</p>
+    </p>
+    <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg"
+        alt="">Wheelchair Accessible Entrance</p>
+    </p>
+    <p class="card-text"><img style="padding-right: 2px;" class="icon-star" src="images/tick-svgrepo-com.svg"
+        alt="">Accessible Parking</p>
+    </p>
+
+
+
+
+
+
+    <fieldset style="padding: 20px; margin-bottom: 20px;">
+      <legend>Enter Your Wait Time</legend>
+      <ul class="list">
+        <li><span style="display: block; padding-bottom:4px;">Daytime:</span>
+          <div class="list-div">
+            <label for="morning">&nbsp;&nbsp;&nbsp; Morning 6AM - 12PM </label>
+            <input type="radio" id="morning" name="daytime" value="Morning 6AM - 12PM" />
+          </div>
+          <div class="list-div">
+            <label for="morning">&nbsp;&nbsp;&nbsp; Afternoon 12PM - 6PM </label>
+            <input type="radio" id="afternoon" name="daytime" value="Afternoon 12PM - 6PM" checked="checked" />
+          </div>
+          <div class="list-div">
+            <label for="morning">&nbsp;&nbsp;&nbsp; Night 6PM - 12AM </label>
+            <input type="radio" id="night" name="daytime" value="Night 6PM - 12AM" />
+          </div>
+          <div class="list-div">
+            <label for="morning">&nbsp;&nbsp;&nbsp; Midnight 12PM - 6AM</label>
+            <input type="radio" id="midnight" name="daytime" value="Midnight 12PM - 6AM" />
+          </div>
+        </li>
+        <li><label>date: </label>&nbsp;&nbsp;&nbsp;<input type="date" id="date" name="date" /></li>
+        <li>
+          <p style="margin-bottom: 1px;">wait-time:</p>
+          <br>
+          <label for="hour">hours:</label>
+          &nbsp;&nbsp;
+          <input id="hours-waited" type="number" max="23" min="0" maxlength="2" /><br><br>
+          <label for="hour">minutes:</label>&nbsp;&nbsp;&nbsp;<input id="minutes-waited" type="number" min="0" max="59"
+            maxlength="2" />
+        </li><br><br>
+        <input style="float: right; margin-right: 50px;" id="reviewForm" class="btn btn-secondary" type="button"
+          value="Submit" />
+      </ul>
+
+      <!-- <label><input type="checkbox" id="happy" name="happy"/>Happy?</label><br/> -->
+
+
+
+    </fieldset>
+    <!-- <form >
           <textarea id="reviewInput" rows="4" cols="50"></textarea><br><br>
           <input id="reviewForm" class="btn btn-secondary" type="button" value="Submit"/>
       </form> -->
-    </div>
-</div>
   </div>
-  
+  </div>
+  </div>
+
   <br />
-<!-- 
+  <!-- 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 ">&copy; 2024 Emergency Time App, Team BBY 3.</p>
     <a href="/"
@@ -186,7 +196,7 @@ style="
       </svg>
     </a>
   </footer> -->
-  
+
 
   <!---------------------------------------------->
   <!-- Your own JavaScript functions go here    -->
@@ -194,10 +204,10 @@ style="
 
   <!-- Link to scripts of your own -->
   <!-- <script src="./scripts/script.js"></script> -->
- 
 
-    <!-- JavaScript to initialize the map -->
-    <!-- <script>
+
+  <!-- JavaScript to initialize the map -->
+  <!-- <script>
       
         // Initialize the map
         function initMap() {
@@ -207,20 +217,15 @@ style="
                 zoom: 8 // Initial zoom level
             });
     </script> -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./scripts/firebaseAPI_BBY03.js"></script>
-    <script src="./scripts/navigation3.js"></script>
-    <script src="./scripts/distanceReview.js"></script>
-    <script src="./scripts/updateTotalWaittime.js"></script>
-    <script src="./scripts/updateAverage.js"></script>
-    
-    <script src="./scripts/scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./scripts/firebaseAPI_BBY03.js"></script>
+  <script src="./scripts/navigation3.js"></script>
+  <script src="./scripts/distanceReview.js"></script>
+  <script src="./scripts/updateTotalWaittime.js"></script>
+  <script src="./scripts/updateAverage.js"></script>
+
+  <script src="./scripts/scripts.js"></script>
 
 </body>
+
 </html>
-
-
-
-
-
-

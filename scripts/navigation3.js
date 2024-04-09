@@ -222,10 +222,6 @@ async function initMap() {
         mapId: "map",
     });
 
-    let marker;
-
-
-
     const pinUser = new PinElement({
         background: "#FFFFFF",
     });
@@ -292,7 +288,7 @@ function writeReviewUpdate() {
             totalWaitTimeNIGHT: hoursWaitedNIGHT,
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
-            alert("working");
+            alert("Thank you!");
             updateTime();
         }).catch((error) => {
             console.error("Error adding review: ", error);
