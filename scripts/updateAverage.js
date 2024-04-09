@@ -2,7 +2,6 @@ function updateAverage() {
     db.collection("hospitals").get().then((allHospitals) => {
         allHospitals.forEach((hospitalDoc) => {
             const hospitalData = hospitalDoc.data();
-            console.log(hospitalData.name, hospitalDoc.id)
 
             let averageHoursAM, averageHoursPM, averageHoursNIGHT, averageHoursMidNight;
 

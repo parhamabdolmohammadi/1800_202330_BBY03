@@ -1,12 +1,18 @@
-html, body {
-    height: 90vh;
-    width: 100vw;
+html,
+body {
+  height: 90vh;
+  width: 100vw;
+}
+
+body {
+  background: url(../images/frame-medical-equipment-desk.jpg) center / cover no-repeat;
+  background-color: #444;
 }
 
 footer {
-    color: black;
-  }
+  color: black;
+}
 
-  .border-top-black {
-    border-top: 1px solid black;
-  }
+.border-top-black {
+  border-top: 1px solid black;
+}

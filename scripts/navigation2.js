@@ -1,7 +1,6 @@
 function displayHospitalInfo() {
     let params = new URL(window.location.href); //get URL of search bar
     let ID = params.searchParams.get("docID"); //get value for key "id"
-    console.log(ID);
 
     // doublecheck: is your collection called "Reviews" or "reviews"?
     db.collection("hospitals")
@@ -93,7 +92,7 @@ function getHospitalAvaliability() {
             hospital_wait_time_morning = doc.data().hospital_wait_time_morning;
             hospital_wait_time_night = doc.data().hospital_wait_time_night;
 
-            text = "Mrning: " + hospital_wait_time_morning + "\t" +
+            text = "Morning: " + hospital_wait_time_morning + "\t" +
                 "Afternoon: " + hospital_wait_time_afternoon + "\t" +
                 "Night: " + hospital_wait_time_night + "\t" +
                 "After Midnight: " + hospital_wait_time_after_midnight;
