@@ -55,7 +55,36 @@ Content of the project folder:
 ```
  Top level of project folder:
 ├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
+├── .firebaserc              # Firebase hosting related file
+├── firebase.json            # Firebase hosting related file
+├── firestore.indexes.json   # Firebase hosting related file
+├── firestore.rules          # Firebase hosting related file
+├   index.html                   # the login page for the userwhen you come to url
+├
+
+main.html                # the home page HTML file, for a logged in user
+map.html                 # shows the map of the hospital
+navigation1.html         # display the wait time for each hospital
+navigation2.html         #display hospital information
+navigation3.html         # navigate users to the right hospital
+reviewLoc.html           #confrims to user after review is submmited 
+saved.html               #displays the book marked hospitals
+        
+        
+        authentication.js            #user login logic 
+        distenceReview.js            #logic for to time the user in the hosptal 
+        notused.js                   #depercated scirpt
+        populatehospital.js          #logic of populating the hospital
+        saved.js                     #logic of the saved hospital
+        scirpts.js                   #the log out logic
+        skeleton.js                  #the main frame of all the scripts
+        udateAverage.js              #the logic to update the average time of the day
+        updateTotalWaittime.js       #the logic to update the sub collection of each hospital in by the user review
+
+
+l
+
+
 └── README.md
 
 It has the following subfolders and files:
