@@ -106,109 +106,11 @@ function writeReview() {
 
 document.getElementById("reviewForm").addEventListener("click", writeReview);
 
-// function writeReview() {
-//     let daytimeSpecified = document.querySelector('input[name="daytime"]:checked').value;
-//     let dateVisited = document.getElementById("date").value;
-//     let hoursWaited = parseInt(document.getElementById("hours-waited").value);
-//     let minutesWaited = parseInt(document.getElementById("minutes-waited").value);
+showPosition();
 
-//     if(hoursWaited >= 24 || hoursWaited < 0) {
-//         Swal.fire({
-//             position: "middle",
-//             icon: "error",
-//             title: "hours should be in range of 0 to 24",
-//             showConfirmButton: false,
-//             timer: 1500
-//           }); // Re
-//                 return;
-//             }
-//             console.log(hoursWaited);
-          
-//             minutesWaited = Math.floor(minutesWaited)
-//             if(minutesWaited >= 60 || minutesWaited < 0) {
-//                 Swal.fire({
-//                     position: "middle",
-//                     icon: "error",
-//                     title: "minutes should be in range of 0 to 60",
-//                     showConfirmButton: false,
-//                     timer: 1500
-//                   }); // Re
-//                 return;
-//             }
+async function showPosition() {
 
-//     let hoursWaitedAM = 0;
-//     let hoursWaitedPM = 0;
-//     let hoursWaitedNIGHT = 0;
-//     let hoursWaitedMidNight = 0;
-
-//     switch (daytimeSpecified) {
-//         case "Morning 6AM - 12PM":
-//             hoursWaitedAM = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Afternoon 12PM - 6PM":
-//             hoursWaitedPM = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Night 6PM - 12AM":
-//             hoursWaitedNIGHT = hoursWaited * 60 + minutesWaited;
-//             break;
-//         case "Midnight 12AM - 6AM":
-//             hoursWaitedMidNight = hoursWaited * 60 + minutesWaited;
-//             break;
-//         default:
-//             break;
-//     }
-
-//     var user = firebase.auth().currentUser;
-//     if (user) {
-//         var currentUser = db.collection("users").doc(user.uid);
-//         var userID = user.uid;
-//         hospitalDocID = localStorage.getItem("hospitalDocID");
-
-//         db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
-//             reviewer: user.displayName,
-//             email: user.email,
-//             daytime: dateVisited,
-//             date :daytimeSpecified,      
-//             hours : hoursWaited,
-//             minutes : minutesWaited
-//          }).then(() => {
-//             Swal.fire({
-//                 position: "middle",
-//                 icon: "success",
-//                 title: "Review Submitted Successfully",
-//                 showConfirmButton: false,
-//                 timer: 1500
-//               }); // Redirect to the thanks page // Redirect to the thanks page
-//         }).catch((error) => {
-//             console.error("Error adding review: ", error);
-//         });
-//     } else {
-//         console.log("No user is signed in");
-//         window.location.href = 'navigation1.html';
-//     }
-// }
-
-// document.getElementById("reviewForm").addEventListener("click", writeReview);
-
-
-let map, lat, lng, hospID;
-// var closest = 100, closestID;
-
-
-getLocation();
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        console.log("Browser doesn't support geolocation.");
-    }
-}
-
-
-let ID = localStorage.getItem('hospitalDocID');
-async function showPosition(position) {
-    
+    let ID = localStorage.getItem('hospitalDocID');
 
     await db.collection("hospitals")
     .doc(ID)
@@ -218,24 +120,11 @@ async function showPosition(position) {
         lng = doc.data().lng;
     });
 
-    // db.collection("hospitals").get().then((allHospitals) => {
-    //     allHospitals.forEach((doc) => {
-    //         let d = distance(doc.data().lat, doc.data().lng);
-    //         console.log(doc.data().name, d);
-    //         if (d < closest) {
-    //             closest = d;
-    //             closestID = doc.data().name;
-    //         }
-    //     });
-    //     // document.getElementById("display-loc").innerHTML = "The closest hospital is " + closestID + ", " +
-    //     //     closest.toFixed(2) + " km";
-    // });
+    console.log(lat, lng);
 
     await initMap();
 
 }
-
-initMap();
 
 async function initMap() {
     // The location of Uluru
@@ -246,13 +135,11 @@ async function initMap() {
     const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary("marker");
 
     // The map, centered at Uluru
-    map = new Map(document.getElementById("here"), {
+    let map = new Map(document.getElementById("here"), {
         zoom: 12,
         center: position,
         mapId: "map",
     });
-
-    let marker;
 
     const pinUser = new PinElement({
         background: "#FFFFFF",
@@ -262,7 +149,7 @@ async function initMap() {
     marker = new AdvancedMarkerElement({
         map: map,
         position: position,
-        title: "You",
+        title: "Hospital",
         gmpClickable: true,
         content: pinUser.element,
     });
@@ -303,7 +190,7 @@ function writeReviewUpdate() {
         var userID = user.uid;
         hospitalDocID = localStorage.getItem("hospitalDocID");
 
-        db.collection("hospitals").doc(hospitalDocID).update({
+        db.collection("hospitals").doc(hospitalDocID).collection("hospitals-reviews").add({
             reviewer: user.displayName,
             email: user.email,
             date: dateVisited,
@@ -315,7 +202,7 @@ function writeReviewUpdate() {
             totalWaitTimeNIGHT: hoursWaitedNIGHT,
             totalWaitTimeMidNight: hoursWaitedMidNight,
         }).then(() => {
-            alert("Thank you!");
+            alert("Thank you");
             updateTime();
         }).catch((error) => {
             console.error("Error adding review: ", error);

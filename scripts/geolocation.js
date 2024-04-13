@@ -64,10 +64,6 @@ async function initMap() {
             });
 
             if (doc.data().name == closestID) {
-                // const pinClose = new PinElement({
-                //     background: "#FBBC04",
-                //     borderColor: "#FFBC04"
-                // });
                 priceTag.setAttribute("style", "background-color: #e14242; border-top: 8px solid #e14242;")
                 marker.content = priceTag;
 

@@ -106,4 +106,21 @@
    color: rgba(255, 255, 255, 0.946);
     background-color: #bfc6eb;
   }
+
+  .ghol {
+    margin: 25px auto;
+  }
+
+  footer p {
+    color: aliceblue;
+
+  }
+
+  nav {
+    padding: 0;
+  }
+
+  a:hover {
+    color: honeydew;
+  }
   

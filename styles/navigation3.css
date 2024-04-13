@@ -1,0 +1,44 @@
+.green {
+  color: green;
+}
+
+.orange {
+  color: rgb(252, 134, 0);
+}
+.waittime {
+    color: rgb(252, 3, 40);
+  }
+  
+  
+  /* Set the map container size */
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .list {
+    list-style-type: none;
+  }
+
+  fieldset li {
+    padding-top: 25px;
+  }
+
+  fieldset {
+    border: 1px solid #ebe7e7;
+    border-radius: 10px;
+
+  }
+
+  .list-div {
+    margin-bottom: 2px;
+  }
+
+  footer p {
+    color: aliceblue;
+
+  }

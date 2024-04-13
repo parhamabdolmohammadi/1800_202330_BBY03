@@ -72,7 +72,7 @@ function proxReview(IDhosp, waitTimeSec) {
     /*
      * PLEASE COMMENT THIS NEXT LINE BEFORE ACTUALLY USING IT TO CALCULATE TIME
      */
-    waitTimeSec = 4500;
+    //waitTimeSec = 4500;
 
     let hoursWaited = Math.floor(waitTimeSec / 3600);
     waitTimeSec -= hoursWaited * 3600;

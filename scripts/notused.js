@@ -83,4 +83,3 @@ submit.addEventListener("click", function () {
     textarea.setAttribute("readonly","readonly");
     submit.setAttribute("disabled", "disabled");
 });
-
